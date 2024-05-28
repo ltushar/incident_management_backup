@@ -1,0 +1,120 @@
+### Get data for incident
+
+GET http://localhost:4004/browse/Incident/$count?$filter=(INCID eq 9)
+
+### Get data for EmpInfo
+
+GET http://localhost:4004/browse/EmpInfo
+
+
+### Get data for incident
+GET http://localhost:4004/odata/v4/manager/Investigation/$count
+
+### Get data for incident
+GET http://localhost:34499/browse/EmpInfo?$filter=(empid eq 'IDPL01')
+
+### Get Investigation
+GET http://localhost:4004/odata/v4/manager/Investigation?$filter=(ID eq c17c405c-df07-4cf2-9400-c3aded7e3660 or ID eq 198fc27d-bb31-4358-b931-bfbd783df08e)
+
+### Get Investigation
+GET http://localhost:4004/odata/v4/manager/Investigation
+
+### Post data for incident
+POST http://localhost:4004/browse/Incident
+Content-Type: application/json
+
+{
+    "IncNo": "INC-2023-005", 
+    "Title": "sfd",
+    "empname": "Tushar Ladhe",
+    "empid": "IDPL09",
+    "emppos": "sd",
+    "division": "fds",
+    "dept": "se",
+    "section": "sd",
+    "incDate": "2024-05-23",
+    "inctime": "11:01:35.35",
+    "incDaterep": "2024-05-09",
+    "inctimerep": "11:01:32.32",
+    "yearexppos": 0,
+    "wasIncOnCosloc": "0",
+    "shift": "0",
+    "latitude": "sd",
+    "longitude": "d",
+    "wascosvehused": "1",
+    "busno": "sd",
+    "noncosvehinvol": "1",
+    "policereportno": "sd",
+    "incCategory": "2",
+    "incType": "8",
+    "eventtype": "2",
+    "actincseverity": "2",
+    "potseverity": "3",
+    "isinvestreq": "1",
+    "incdesc": "dssfsfs",
+    "isdraft": "0",
+    "CosEquip": [
+        {
+            "EquipNo": 1
+        },
+        {
+            "EquipNo": 2
+        }
+    ],
+    "Witn": [
+        {
+            "witname": "sd",
+            "witcontact": "sd",
+            "witemail": "sd",
+            "witstatement": "ds"
+        }
+    ],
+    "cos_emp": [
+        {
+            "empid": "sd",
+            "empname": "sd",
+            "occupation": "d",
+            "exp": "sd",
+            "association": "dss",
+            "shift": "sd"
+        }
+    ],
+    "contract": [],
+    "public": []
+}
+
+### Post for notes
+
+PUT http://localhost:4004/odata/v4/manager/CorrectAction(ID=71be9794-9968-4fa8-b990-7e746c44f9d0)
+Content-Type: application/json
+
+                  {
+                   "addedby":"Demo User",
+                   "addedon":"2024-05-13",
+                   "IncNotes":"",
+                   "NotesType":"",     
+                   "NotesReview":"tested review"  ,
+                   "INCI_ID": "b0cedee1-457a-42ab-a9af-e084a2fdd028",
+                   "INCI_INCID": 2     
+                  }
+
+### Get Action
+POST http://localhost:4004/Test/getSequence
+Content-Type: application/json
+
+{}
+  
+### Update Followup status 
+PATCH  http://localhost:4004/odata/v4/manager/Followup(502d5119-42b9-4e4d-873c-9c871f8bf97b)
+Content-Type: application/json
+
+{
+    "folloupduedate": "2024-05-16",
+    "followupstat": "29",
+    "followupcrfor": "Mary Magdalene",
+    "followupnotes": "test",
+    "compdate": "2024-05-29",
+    "INCI_ID": "0c82d097-2eaf-4df5-9409-728fdc751c37",
+    "INCI_INCID": 9,
+    "followupflg":"0"
+}  

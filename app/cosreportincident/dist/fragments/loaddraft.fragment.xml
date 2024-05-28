@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<TableSelectDialog
+		id="draftid"
+		noDataText="No data found"
+		title="Loaded drafts"
+		search=".handleSearch"
+		confirm=".handleClose"
+		cancel=".handleClose"
+		items="{
+			path : '/drafts',
+			sorter : {
+				path : 'INCID',
+				descending : true
+			}
+		}">
+		<ColumnListItem vAlign="Middle" press="onSelectLoadDraft" visible = "{= ${ISDRAFT} === '0' ? false :true}">
+			<cells>
+				<Text text= "{IncNo}"/>
+
+				<Text text= "{createdAt}"/>
+
+				<Text text= "{Title}"/>
+
+				<Text text= "{createdBy}"/>
+
+				<Button
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        press="onDeleteDraft"
+                                        class="sapUiTinyMarginBegin"
+                /> 
+
+	
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<header>
+					<Text text="Incident Number" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Date Saved" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Title" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Saved By" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

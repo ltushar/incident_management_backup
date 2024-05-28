@@ -1,0 +1,90 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog showHeader="false">
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Notes Details"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <!-- <Label text="Added By" />
+                    <Input
+                        value="{localModel>/Notes/addedby}"
+                        editable="false"
+                    />
+
+                    <Label text="Added On" />
+                    <Input
+                        value="{localModel>/Notes/addedon}"
+                        editable="false"
+                    /> -->
+
+                    <Label text="Notes Type" />
+                    <Input value="{localModel>/Notes/NotesType}" />
+
+                    <Label text="Notes" />
+                    <TextArea
+                        value="{localModel>/Notes/IncNotes}"
+                        rows="5"
+                        cols="100"
+                        placeholder="Enter notes here"
+                    />
+
+                    <Label text="Is Review Needed for added note ?" />
+
+                    <RadioButtonGroup
+                        selectedIndex="{localModel>/Notes/NotesReview}"
+                        columns="2"
+                    >
+                        <RadioButton text="Yes" />
+                        <RadioButton text="No" />
+                    </RadioButtonGroup>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button
+                        visible="{= ${localModel>/child5} === true }"
+                        type="Accept"
+                        text="Submit"
+                        press="OnSubmitNotes"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        visible="{= ${localModel>/child6} === true }"
+                        type="Accept"
+                        text="Update"
+                        press="OnUpdateNotes"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        type="Reject"
+                        text="Cancel"
+                        press="OnCancelNotesFragment"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

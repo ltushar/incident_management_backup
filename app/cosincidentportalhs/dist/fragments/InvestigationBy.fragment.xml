@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		
+		title="Employee's Supervsior"
+		items="{localModel>/EmpSupNames}"
+		search=".onValueHelpSearch"
+		confirm="onPressValuHelp"
+		cancel=".onValueHelpClose">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{localModel>name}" 
+            description="{localModel>id}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

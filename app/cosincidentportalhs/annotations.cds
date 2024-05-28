@@ -1,0 +1,1 @@
+using HealthSafety as service from '../../srv/hs-service';

@@ -1,0 +1,2239 @@
+<mvc:View
+    controllerName="cosincidentportal.controller.IncidentPortal"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:upload="sap.m.upload"
+    xmlns:fiori="sap.ui.webc.fiori"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="Incident Portal "
+    >
+        <GenericTag
+            text="Incident No: {localModel>/Payload1/IncNo}"
+            design="StatusIconHidden"
+            status="None"
+            class="sapUiSmallMargin"
+        >
+            <ObjectNumber
+                state="None"
+                emphasized="true"
+            />
+        </GenericTag>
+
+        <GenericTag
+            text="Employee Name: {localModel>/Payload1/empname}"
+            design="StatusIconHidden"
+            status="Warning"
+            class="sapUiSmallMargin"
+        >
+            <ObjectNumber
+                state="Warning"
+                emphasized="true"
+            />
+        </GenericTag>
+
+        <GenericTag
+            text="Employee ID:  {localModel>/Payload1/empid}"
+            design="StatusIconHidden"
+            status="Success"
+            class="sapUiSmallMargin"
+        >
+            <ObjectNumber
+                state="Success"
+                emphasized="true"
+            />
+        </GenericTag>
+        <GenericTag
+            text="Employee Position: {localModel>/Payload1/emppos}"
+            design="StatusIconHidden"
+            status="Warning"
+            class="sapUiSmallMargin"
+        >
+            <ObjectNumber
+                state="Warning"
+                emphasized="true"
+            />
+        </GenericTag>
+        <GenericTag
+            text="Employee Work Location: {localModel>/Payload1/worklocation}"
+            design="StatusIconHidden"
+            status="Success"
+            class="sapUiSmallMargin"
+        >
+            <ObjectNumber
+                state="Success"
+                emphasized="true"
+            />
+        </GenericTag>
+        <GenericTag
+            text="Supervisor: {localModel>/Payload1/supname}"
+            design="StatusIconHidden"
+            status="Information"
+            class="sapUiSmallMargin"
+        >
+            <ObjectNumber
+                state="Information"
+                emphasized="true"
+            />
+        </GenericTag>
+
+        <GenericTag
+            text="Incident Date: {localModel>/Payload1/incDate}"
+            design="StatusIconHidden"
+            status="Error"
+            class="sapUiSmallMargin"
+        >
+            <ObjectNumber
+                state="Error"
+                emphasized="true"
+            />
+        </GenericTag>
+
+        <content>
+            <!-- Icon Tab Bar details (KPI) -->
+            <VBox class="sapUiSmallMargin">
+                <IconTabBar
+                    id="icontabbar1"
+                    select="OnselectIconTab"
+                    expanded="true"
+                    class="sapUiResponsiveContentPadding myLongText"
+                >
+                    <items>
+                        <IconTabFilter
+                            icon="sap-icon://detail-view"
+                            iconColor="Positive"
+                            key="icon1"
+                            text="Incident Details"
+                        >
+                            <f:SimpleForm
+                                id="SimpleFormToolbar"
+                                editable="true"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="4"
+                                labelSpanL="3"
+                                labelSpanM="4"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="0"
+                                emptySpanL="4"
+                                emptySpanM="0"
+                                emptySpanS="0"
+                                columnsXL="2"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false"
+                                ariaLabelledBy="Title1"
+                            >
+                                <f:content>
+                                    <!-- <Label text="Incident Number" />
+				<Input value= "{localModel>/IncNo}" /> -->
+                                    <Label
+                                        text="Title (Brief Description of Event)"
+                                    />
+                                    <Input
+                                        value="{localModel>/Payload1/Title}"
+                                        editable="false"
+                                        placeholder="Enter maximum 200 character only"
+                                        maxLength="200"
+                                    />
+                                </f:content>
+                            </f:SimpleForm>
+                            <CustomListItem>
+                                <Panel width="auto">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <m:Title text="Employee Details:" />
+                                            <ToolbarSpacer />
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <f:SimpleForm
+                                            id="SimpleFormChange3544"
+                                            editable="true"
+                                            layout="ColumnLayout"
+                                            labelSpanXL="3"
+                                            labelSpanL="3"
+                                            labelSpanM="3"
+                                            labelSpanS="12"
+                                            adjustLabelSpan="false"
+                                            emptySpanXL="4"
+                                            emptySpanL="4"
+                                            emptySpanM="4"
+                                            emptySpanS="0"
+                                            columnsXL="2"
+                                            columnsL="1"
+                                            columnsM="1"
+                                            singleContainerFullSize="false"
+                                        >
+                                            <f:content>
+                                                <Label text="Employee Name " />
+                                                <Input
+                                                    value="{localModel>/Payload1/empname}"
+                                                    editable="false"
+                                                />
+                                                <Label text="Employee Number" />
+                                                <Input
+                                                    value="{localModel>/Payload1/empid}"
+                                                    editable="false"
+                                                />
+                                                <Label text="Division" />
+                                                <Input
+                                                    value="{localModel>/Payload1/division}"
+                                                    editable="false"
+                                                />
+                                                <Label text="Department" />
+                                                <Input
+                                                    value="{localModel>/Payload1/dept}"
+                                                    editable="false"
+                                                />
+                                                <Label text="Work Loction" />
+                                                <Input
+                                                    value="{localModel>/Payload1/worklocation}"
+                                                    editable="false"
+                                                />
+                                                <Label text="Section" />
+                                                <Input
+                                                    value="{localModel>/Payload1/section}"
+                                                    editable="false"
+                                                />
+                                                <Label
+                                                    text="Employee Position"
+                                                />
+                                                <Input
+                                                    value="{localModel>/Payload1/emppos}"
+                                                    editable="false"
+                                                />
+
+                                                <Label
+                                                    text="Employee's Supervisor"
+                                                />
+
+                                                <Input
+                                                    id="inputValueHelpCustomIcon"
+                                                    type="Text"
+                                                    showValueHelp="true"
+                                                    value="{localModel>/Payload1/supname}"
+                                                    editable="false"
+                                                    valueHelpRequest="handleValueHelp"
+                                                />
+
+                                                <Label
+                                                    text="Date of Incident"
+                                                    labelFor="DP1"
+                                                />
+                                                <DatePicker
+                                                    id="DP2"
+                                                    placeholder="Enter Date"
+                                                    change="handleChange"
+                                                    valueFormat='yyyy-MM-dd'
+                                                    value="{localModel>/Payload1/incDate}"
+                                                    editable="false"
+                                                />
+
+                                                <Label
+                                                    text="Time of Incident"
+                                                />
+                                                <TimePicker
+                                                    id="TP3"
+                                                    change="handleChange"
+                                                    valueFormat="hh:mm:ss.s"
+                                                    value="{localModel>/Payload1/inctime}"
+                                                    editable="false"
+                                                />
+
+                                                <Label
+                                                    text="Date of Incident"
+                                                    labelFor="DP1"
+                                                />
+
+                                                <Label
+                                                    text="Date Incident Reported"
+                                                    labelFor="DP1"
+                                                />
+                                                <DatePicker
+                                                    id="DP1"
+                                                    placeholder="Enter Date"
+                                                    change="handleChange"
+                                                    valueFormat='yyyy-MM-dd'
+                                                    value="{localModel>/Payload1/incDaterep}"
+                                                    editable="false"
+                                                    maxDate="{localModel>/Payload1/maxDate}"
+                                                />
+
+                                                <Label
+                                                    text="Time Incident Reported"
+                                                />
+                                                <TimePicker
+                                                    id="TP2"
+                                                    change="handleChange"
+                                                    valueFormat="hh:mm:ss.s"
+                                                    value="{localModel>/Payload1/inctimerep}"
+                                                    editable="false"
+                                                />
+
+                                                <Label
+                                                    text="Years Experience in position"
+                                                />
+                                                <Input
+                                                    value="{localModel>/Payload1/yearexppos}"
+                                                    editable="false"
+                                                />
+
+                                                <Label
+                                                    text="Was Incident on a COS facility or location?"
+                                                    labelFor="groupB"
+                                                    required="true"
+                                                />
+                                                <RadioButtonGroup
+                                                    id="radioGroup"
+                                                    editable="false"
+                                                    columns="2"
+                                                    selectedIndex="{localModel>/Payload1/wasIncOnCosloc}"
+                                                    select="onRadioSelect"
+                                                >
+                                                    <buttons>
+                                                        <RadioButton
+                                                            text="Yes"
+                                                        />
+                                                        <RadioButton
+                                                            text="No"
+                                                        />
+                                                    </buttons>
+                                                </RadioButtonGroup>
+
+                                                <Label text="Shift" />
+                                                <RadioButtonGroup
+                                                    id="rbg2"
+                                                    columns="2"
+                                                    selectedIndex="{localModel>/Payload1/shift}"
+                                                    editable="false"
+                                                >
+                                                    <buttons>
+                                                        <RadioButton
+                                                            id="RB2-1"
+                                                            text="Day Shift"
+                                                        />
+                                                        <RadioButton
+                                                            id="RB2-2"
+                                                            text="Evening Shift"
+                                                        />
+                                                        <RadioButton
+                                                            id="RB2-3"
+                                                            text="Night Shift"
+                                                        />
+                                                        <RadioButton
+                                                            id="RB2-4"
+                                                            text="Overtime"
+                                                        />
+                                                    </buttons>
+                                                </RadioButtonGroup>
+                                            </f:content>
+                                        </f:SimpleForm>
+
+                                        <Label
+                                            text="If it is a Transit Incident, fill location below:"
+                                            design="Bold"
+                                            class="sapUiMediumMarginBottom"
+                                        />
+                                        <HBox class="sapUiMediumMarginBottom">
+                                            <Label
+                                                text="Latitude (Location) :"
+                                                class="sapUiTinyMarginTop sapUiMediumMarginBegin"
+                                                design="Bold"
+                                            />
+                                            <Input
+                                                value="{localModel>/Payload1/latitude}"
+                                                class="sapUiSmallMarginBegin"
+                                                width="20rem"
+                                                placeholder="Enter maximum 200 character only"
+                                            />
+
+                                            <Label
+                                                text="Longitude (Location) :"
+                                                class="sapUiTinyMarginTop sapUiLargeMarginBegin"
+                                                design="Bold"
+                                            />
+                                            <Input
+                                                value="{localModel>/Payload1/longitude}"
+                                                class="sapUiSmallMarginBegin"
+                                                width="20rem"
+                                                placeholder="Enter maximum 200 character only"
+                                            />
+                                        </HBox>
+                                    </content>
+                                </Panel>
+                            </CustomListItem>
+
+                            <!-- Additional Info -->
+                            <CustomListItem>
+                                <Panel width="auto">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <m:Title text="Additional info:" />
+                                            <ToolbarSpacer />
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <f:SimpleForm
+                                            id="SimpleFormChange3545"
+                                            editable="true"
+                                            layout="ResponsiveGridLayout"
+                                            title=""
+                                            labelSpanXL="3"
+                                            labelSpanL="3"
+                                            labelSpanM="3"
+                                            labelSpanS="12"
+                                            adjustLabelSpan="false"
+                                            emptySpanXL="4"
+                                            emptySpanL="4"
+                                            emptySpanM="4"
+                                            emptySpanS="0"
+                                            columnsXL="1"
+                                            columnsL="1"
+                                            columnsM="1"
+                                            singleContainerFullSize="false"
+                                        >
+                                            <f:content>
+                                                <Label
+                                                    text="Were you using a COS City Vehicle or Personal vehicle?"
+                                                    labelFor="groupB"
+                                                    required="true"
+                                                />
+                                                <RadioButtonGroup
+                                                    id="radioGroupid"
+                                                    columns="2"
+                                                    selectedIndex="{localModel>/Payload1/wascosvehused}"
+                                                    select="onRadioSelect"
+                                                >
+                                                    <buttons>
+                                                        <RadioButton
+                                                            text="COS Vehicle"
+                                                        />
+                                                        <RadioButton
+                                                            text=" Personal Vehicle"
+                                                        />
+                                                    </buttons>
+                                                </RadioButtonGroup>
+
+                                                <Label text="COS Equipment #" />
+                                                <VBox
+                                                    items="{localModel>/Payload1/COSEquipment}"
+                                                >
+                                                    <CustomListItem>
+                                                        <HBox>
+                                                            <Input
+                                                                value="{localModel>EquipNo}"
+                                                                placeholder="Enter Maximum 200 characters only."
+                                                                width="20rem"
+                                                                class="sapUiLargeMarginRight"
+                                                            />
+
+                                                            <Button
+                                                                icon="sap-icon://add"
+                                                                type="Default"
+                                                                press="onAddCOSEquip"
+                                                                class="sapUiTinyMarginBegin"
+                                                            />
+
+                                                            <Button
+                                                                icon="sap-icon://delete"
+                                                                type="Reject"
+                                                                press="onDeleteCOS"
+                                                                class="sapUiTinyMarginBegin"
+                                                            />
+                                                        </HBox>
+                                                    </CustomListItem>
+                                                </VBox>
+
+                                                <Label
+                                                    text="Bus # (if transit incident)"
+                                                />
+                                                <Input
+                                                    value="{localModel>/Payload1/busno}"
+                                                    placeholder="Enter maximum 100 character only"
+                                                />
+
+                                                <Label
+                                                    text="Were there non-COS vehicles involved?"
+                                                />
+
+                                                <RadioButtonGroup
+                                                    id="radioGroupid1"
+                                                    columns="2"
+                                                    selectedIndex="{localModel>/Payload1/noncosvehinvol}"
+                                                    select="onRadioSelect"
+                                                >
+                                                    <buttons>
+                                                        <RadioButton
+                                                            text="Yes"
+                                                        />
+                                                        <RadioButton
+                                                            text="No"
+                                                        />
+                                                    </buttons>
+                                                </RadioButtonGroup>
+
+                                                <Label
+                                                    text="Police Report # "
+                                                />
+                                                <Input
+                                                    value="{localModel>/Payload1/policereportno}"
+                                                />
+                                            </f:content>
+                                        </f:SimpleForm>
+
+                                        <HBox>
+                                            <Label
+                                                text="Are additional Mental Wellness supports offered or required ?"
+                                                design="Bold"
+                                                class="sapUiTinyMarginTop"
+                                            />
+                                            <RadioButtonGroup
+                                                columns="2"
+                                                selectedIndex="{localModel>/Payload1/addwellness}"
+                                                select="onRadioSelect"
+                                            >
+                                                <RadioButton text="Yes" />
+                                                <RadioButton text="No" />
+                                            </RadioButtonGroup>
+                                        </HBox>
+
+                                        <MessageStrip
+                                            text="For mental wellness support please contact EFAP at 306-975-3327 or talk to your supervisor"
+                                            showIcon="true"
+                                            class="sapUiSmallMarginBottom"
+                                        />
+
+                                        <Panel expandable="false">
+                                            <headerToolbar>
+                                                <OverflowToolbar>
+                                                    <m:Title text="" />
+                                                    <ToolbarSpacer />
+                                                    <Button
+                                                        icon="sap-icon://add"
+                                                        type="Emphasized"
+                                                        press="onAddWitness"
+                                                        visible="{= ${localModel>/Payload1/addwellness} === 0 ? true :false}"
+                                                    />
+                                                </OverflowToolbar>
+                                            </headerToolbar>
+
+                                            <Table
+                                                items="{localModel>/Payload1/witness}"
+                                                visible="{= ${localModel>/Payload1/addwellness} === 0 ? true :false}"
+                                                noDataText="No data"
+                                            >
+                                                <columns>
+                                                    <Column>
+                                                        <Label
+                                                            text="Name of Witness"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Witness contact number"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Email ID"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Witness Statement"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label text="" />
+                                                    </Column>
+                                                </columns>
+
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Input
+                                                            value="{localModel>witname}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>witcontact}"
+                                                            maxLength="10"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>witemail}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>witstatement}"
+                                                        />
+
+                                                        <Button
+                                                            icon="sap-icon://delete"
+                                                            type="Reject"
+                                                            press="onDelete"
+                                                        />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </Table>
+                                        </Panel>
+                                    </content>
+                                </Panel>
+                            </CustomListItem>
+
+                            <CustomListItem>
+                                <Panel width="auto">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <m:Title
+                                                text="Incident Classification"
+                                            />
+                                            <ToolbarSpacer />
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <f:SimpleForm
+                                            id="SimpleFormChange35"
+                                            editable="true"
+                                            layout="ColumnLayout"
+                                            title=""
+                                            labelSpanXL="3"
+                                            labelSpanL="3"
+                                            labelSpanM="3"
+                                            labelSpanS="12"
+                                            adjustLabelSpan="false"
+                                            emptySpanXL="4"
+                                            emptySpanL="4"
+                                            emptySpanM="4"
+                                            emptySpanS="0"
+                                            columnsXL="1"
+                                            columnsL="1"
+                                            columnsM="1"
+                                            singleContainerFullSize="false"
+                                        >
+                                            <f:content>
+                                                <Label
+                                                    text="Incident Category"
+                                                    required="true"
+                                                />
+                                                <Select
+                                                    forceSelection="false"
+                                                    selectedKey="{localModel>/Payload1/incCategory}"
+                                                    id="incCatId"
+                                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncidentCategory'}]
+                                    }"
+                                                >
+                                                    <core:Item
+                                                        key="{mid}"
+                                                        text="{text}"
+                                                    />
+                                                </Select>
+
+                                                <Label
+                                                    text="Incident Type(Primary)"
+                                                    required="true"
+                                                />
+
+                                                <Select
+                                                    id="incTypeId"
+                                                    forceSelection="false"
+                                                    selectedKey="{localModel>/Payload1/incType}"
+                                                    change="onLiveChange"
+                                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncidentTypes'}]
+                                    }"
+                                                >
+                                                    <core:Item
+                                                        key="{mid}"
+                                                        text="{text}"
+                                                    />
+                                                </Select>
+
+                                                <Label
+                                                    text="Type of Event"
+                                                    required="true"
+                                                />
+                                                <Select
+                                                    forceSelection="false"
+                                                    selectedKey="{localModel>/Payload1/eventtype}"
+                                                    id="eventId"
+                                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'TypeofEvents'}]
+                                    }"
+                                                >
+                                                    <core:Item
+                                                        key="{mid}"
+                                                        text="{text}"
+                                                    />
+                                                </Select>
+
+                                                <Label
+                                                    text="Actual Incident Severity"
+                                                    required="true"
+                                                />
+                                                <Select
+                                                    forceSelection="false"
+                                                    selectedKey="{localModel>/Payload1/actincseverity}"
+                                                    id="actsevId"
+                                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text'},
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncSevirity'}]
+                                    }"
+                                                >
+                                                    <core:Item
+                                                        key="{mid}"
+                                                        text="{text}"
+                                                    />
+                                                </Select>
+
+                                                <Label
+                                                    text="Pyential Severity"
+                                                    required="true"
+                                                />
+                                                <Select
+                                                    forceSelection="false"
+                                                    selectedKey="{localModel>/Payload1/potseverity}"
+                                                    id="poteId"
+                                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncSevirity'}]
+                                    }"
+                                                >
+                                                    <core:Item
+                                                        key="{mid}"
+                                                        text="{text}"
+                                                    />
+                                                </Select>
+                                                <Label
+                                                    text="Is a Detailed Investigation with OHS required ?"
+                                                />
+
+                                                <RadioButtonGroup
+                                                    id="radioGroupid12"
+                                                    columns="2"
+                                                    selectedIndex="{localModel>/Payload1/isinvestreq}"
+                                                    select="onRadioSelect"
+                                                >
+                                                    <buttons>
+                                                        <RadioButton
+                                                            text="Yes"
+                                                        />
+                                                        <RadioButton
+                                                            text="No"
+                                                        />
+                                                    </buttons>
+                                                </RadioButtonGroup>
+                                            </f:content>
+                                        </f:SimpleForm>
+
+                                        <HBox>
+                                            <m:FlexBox alignItems="Center">
+                                                <Label
+                                                    text="Other Involved People"
+                                                    design="Bold"
+                                                />
+
+                                                <CheckBox
+                                                    text="COS Employee"
+                                                    selected="{localModel>/Payload1/child1}"
+                                                />
+                                                <CheckBox
+                                                    text="Contractor"
+                                                    selected="{localModel>/Payload1/child2}"
+                                                />
+                                                <CheckBox
+                                                    text="Member of the Public"
+                                                    selected="{localModel>/Payload1/child3}"
+                                                />
+                                            </m:FlexBox>
+                                        </HBox>
+
+                                        <Panel
+                                            expandable="false"
+                                            visible="{= ${localModel>/Payload1/child1} === true}"
+                                            width="auto"
+                                        >
+                                            <headerToolbar>
+                                                <OverflowToolbar>
+                                                    <m:Title
+                                                        text="COS Employee"
+                                                    />
+                                                    <ToolbarSpacer />
+                                                    <Button
+                                                        icon="sap-icon://add"
+                                                        type="Emphasized"
+                                                        press="onAddCOSEmployee"
+                                                    />
+                                                </OverflowToolbar>
+                                            </headerToolbar>
+
+                                            <Table
+                                                items="{localModel>/Payload1/COSEmployee}"
+                                            >
+                                                <columns>
+                                                    <Column>
+                                                        <Label
+                                                            text="Employee ID"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Employee Name"
+                                                        />
+                                                    </Column>
+
+                                                    <Column>
+                                                        <Label
+                                                            text="Experience"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Association"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label text="Shift" />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label text="" />
+                                                    </Column>
+                                                </columns>
+
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Input
+                                                            value="{localModel>empid}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>empname}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>exp}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>association}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>shift}"
+                                                        />
+
+                                                        <Button
+                                                            icon="sap-icon://delete"
+                                                            type="Reject"
+                                                            press="onDeleteCOSEmp"
+                                                        />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </Table>
+                                        </Panel>
+
+                                        <Panel
+                                            expandable="false"
+                                            visible="{= ${localModel>/Payload1/child2} === true}"
+                                        >
+                                            <headerToolbar>
+                                                <OverflowToolbar>
+                                                    <m:Title
+                                                        text="Contractor"
+                                                    />
+                                                    <ToolbarSpacer />
+                                                    <Button
+                                                        icon="sap-icon://add"
+                                                        type="Emphasized"
+                                                        press="onAddContractor"
+                                                    />
+                                                </OverflowToolbar>
+                                            </headerToolbar>
+
+                                            <Table
+                                                items="{localModel>/Payload1/Contractor}"
+                                            >
+                                                <columns>
+                                                    <Column>
+                                                        <Label
+                                                            text="Contractor Name"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Contract Number"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="COS Project Manager"
+                                                        />
+                                                    </Column>
+
+                                                    <Column>
+                                                        <Label
+                                                            text="Company Address"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Company Contact Number"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label text="" />
+                                                    </Column>
+                                                </columns>
+
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Input
+                                                            value="{localModel>contractname}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>contractno}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>cosprojmgrname}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>compadd}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>contactno}"
+                                                            maxLength="10"
+                                                        />
+
+                                                        <Button
+                                                            icon="sap-icon://delete"
+                                                            type="Reject"
+                                                            press="onDeleteContarctor"
+                                                        />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </Table>
+                                        </Panel>
+
+                                        <Panel
+                                            expandable="false"
+                                            visible="{= ${localModel>/Payload1/child3} === true}"
+                                        >
+                                            <headerToolbar>
+                                                <OverflowToolbar>
+                                                    <m:Title
+                                                        text="Member of Public"
+                                                    />
+                                                    <ToolbarSpacer />
+                                                    <Button
+                                                        icon="sap-icon://add"
+                                                        type="Emphasized"
+                                                        press="onAddMember"
+                                                    />
+                                                </OverflowToolbar>
+                                            </headerToolbar>
+
+                                            <Table
+                                                items="{localModel>/Payload1/Member}"
+                                            >
+                                                <columns>
+                                                    <Column>
+                                                        <Label text="Name" />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label text="Address" />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label text="Phone" />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Email Address"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="Were you assisted by
+                                             COS Employee ?"
+                                                            wrapping="true"
+                                                            width="200px"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label
+                                                            text="COS Employee Name"
+                                                        />
+                                                    </Column>
+                                                    <Column>
+                                                        <Label text="" />
+                                                    </Column>
+                                                </columns>
+
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <Input
+                                                            value="{localModel>name}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>address}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>phone}"
+                                                        />
+
+                                                        <Input
+                                                            value="{localModel>email}"
+                                                        />
+
+                                                        <RadioButtonGroup
+                                                            id="radioGroupid123"
+                                                            columns="2"
+                                                            selectedIndex="{localModel>assistedbycos}"
+                                                            select="onRadioSelect"
+                                                        >
+                                                            <buttons>
+                                                                <RadioButton
+                                                                    text="Yes"
+                                                                />
+                                                                <RadioButton
+                                                                    text="No"
+                                                                />
+                                                            </buttons>
+                                                        </RadioButtonGroup>
+
+                                                        <Input
+                                                            value="{localModel>cosempname}"
+                                                        />
+
+                                                        <Button
+                                                            icon="sap-icon://delete"
+                                                            type="Reject"
+                                                            press="onDeleteMember"
+                                                        />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </Table>
+                                        </Panel>
+                                    </content>
+                                </Panel>
+                            </CustomListItem>
+
+                            <!--Information details -->
+                            <Panel
+                                expandable="false"
+                                headerText="Description of Incident"
+                                width="100%"
+                                class="sapUiTinyMargin"
+                            >
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <m:Title
+                                            text="Description of Incident"
+                                        />
+                                        <Button
+                                            icon="sap-icon://information"
+                                            press="onInfo"
+                                        />
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <content>
+                                    <TextArea
+                                        width="100%"
+                                        id="TextArea"
+                                        placeholder="Enter text"
+                                        change="handleChange"
+                                        showExceededText="true"
+                                        rows="4"
+                                        ariaLabelledBy="TextAreaLabel"
+                                        value="{localModel>/Payload1/incdesc}"
+                                    />
+                                </content>
+                            </Panel>
+
+                            <OverflowToolbar>
+                                <ToolbarSpacer />
+                                <Button
+                                    type="Emphasized"
+                                    text="Update"
+                                    press="onUpdateIncident"
+                                />
+                            </OverflowToolbar>
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon="sap-icon://process" />
+
+                        <IconTabFilter
+                            icon="sap-icon://detail-view"
+                            iconColor="Critical"
+                            key="Investigation"
+                            text="Investigation"
+                        >
+                            <Panel>
+                                <VBox class="sapUiSmallMargin">
+                                    <f:SimpleForm
+                                        id="SimpleFormChange354"
+                                        editable="true"
+                                        layout="ResponsiveGridLayout"
+                                        title="Investigation Details"
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false"
+                                    >
+                                        <f:content>
+                                            <Label text="Date Investigated" />
+                                            <DatePicker
+                                                id="d9"
+                                                placeholder="Select Invetigation date"
+                                                valueFormat='yyyy-MM-dd'
+                                                value="{localModel>/Payload/DateInvest}"
+                                            />
+                                            <Label text="Investigated By" />
+                                            <Input
+                                                value="{localModel>/Payload/InvestigationBy}"
+                                            />
+                                            <Label
+                                                text="Employee Return to work?"
+                                            />
+                                            <RadioButtonGroup
+                                                id="radioGroup9"
+                                                selectedIndex="{localModel>/Payload/EmpRTW}"
+                                                columns="2"
+                                            >
+                                           
+                                                    <RadioButton text="Yes" />
+                                                    <RadioButton text="No" />
+                                         
+                                            </RadioButtonGroup>
+
+                                            <Label
+                                                text="Investigation status details"
+                                            />
+                                            <TextArea
+                                                value="{localModel>/Payload/InvStatDetails}"
+                                                rows="4"
+                                                cols="70"
+                                                placeholder="Enter investigation details here"
+                                            />
+                                        </f:content>
+                                    </f:SimpleForm>
+                                    <OverflowToolbar>
+                                        <ToolbarSpacer />
+                                        <Button
+                                            type="Emphasized"
+                                            text="Submit"
+                                            press="onSubmitInvestigation"
+                                            id="savebutton"
+                                        />
+                                    </OverflowToolbar>
+                                </VBox>
+                            </Panel>
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon="sap-icon://process" />
+
+                        <IconTabFilter
+                            icon="sap-icon://sys-enter"
+                            iconColor="Default"
+                            key="icon3"
+                            text="Corrective Action"
+                        >
+                            <Panel headerText="Corrective Action Details">
+                                <MessageStrip
+                                    text="To add New Corrective action please click on 'Add New'."
+                                    showIcon="true"
+                                    class="sapUiSmallMarginBottom"
+                                />
+
+                                <Toolbar>
+                                    <ToolbarSpacer />
+
+                                    <!-- <Button  text="Add New" press="onAddCA"
+                    ariaHasPopup="Dialog"  /> -->
+                                    <Button
+                                        text="Add New"
+                                        width="230px"
+                                        press=".onDefaultDialogPress"
+                                        ariaHasPopup="Dialog"
+                                    />
+                                </Toolbar>
+
+                                <!-- <Table items="{/CorrectAction}"> -->
+
+                                <Table
+                                    id="correctiveActionTable"
+                                    items="{/CorrectAction}"
+                                >
+                                    <columns>
+                                        <Column>
+                                            <Label text="Created By" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Created Date" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Assign To" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Due Date" />
+                                        </Column>
+                                        <Column>
+                                            <Label
+                                                text="Corrective Action Status"
+                                            />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Comments" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="" />
+                                        </Column>
+                                    </columns>
+
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Input
+                                                value="{createdBy}"
+                                                editable="false"
+                                            />
+                                            <Input
+                                                value="{createdAt}"
+                                                editable="false"
+                                            />
+                                            <Input
+                                                value="{AssignTo}"
+                                                editable="false"
+                                                placeholder="Enter Assigned to here"
+                                            />
+                                            <DatePicker
+                                                id="d1"
+                                                placeholder="Enter Date"
+                                                valueFormat='yyyy-MM-dd'
+                                                value="{DueDate}"
+                                                editable="false"
+                                            />
+
+                                            <Input
+                                                value="{=   ${CAStatus} === '22' ? 'Overdue' :
+${CAStatus} === '23' ? 'Pending' :
+${CAStatus} === '24' ? 'In Progress' :
+${CAStatus} === '25' ? 'Open' :
+${CAStatus} === '26' ? 'Closed' :
+'' }"
+                                                editable="false"
+                                            />
+
+                                            <!-- <Select
+                                                id="CAStatus"
+                                                selectedKey="{CAStatus}"
+                                                editable="false"
+                                                width="200px"
+                                            >
+                                                <items>
+                                                    <core:Item
+                                                        text="Overdue"
+                                                        key="CAST1"
+                                                    />
+                                                    <core:Item
+                                                        text="Upcoming"
+                                                        key="CAST2"
+                                                    />
+                                                    <core:Item
+                                                        text="Due Today"
+                                                        key="CAST3"
+                                                    />
+                                                </items>
+                                            </Select> -->
+
+                                            <TextArea
+                                                value="{Comments}"
+                                                editable="false"
+                                                rows="3"
+                                                cols="50"
+                                                placeholder="Enter Comments here"
+                                            />
+
+                                            <!-- <Table items="{/CorrectAction}">
+                         <columns> 
+                         <Column> <Label text="Created By" /> </Column>
+                         <Column> <Label text="Created Date" /> </Column>
+                         <Column> <Label text="Assign To" /> </Column>
+                            <Column> <Label text="Due Date" /> </Column>
+                         <Column> <Label text="Corrective Action Status" /> </Column>   
+                          <Column> <Label text="Comments" /> </Column>   
+                            <Column> <Label text="" /> </Column>   
+                   
+                         </columns>
+
+                         <ColumnListItem>
+                            <cells>  <Input  value="{}"/> 
+                             <Input  value="{}" /> 
+                             <Input  value="{localModel>/CorrectAction/AssignTo}" placeholder="Enter Assigned to here" /> 
+                          <DatePicker
+                                            id="d1"
+                                            placeholder="Enter Date"
+                                            valueFormat='yyyy-MM-dd'
+                                            value="{localModel>/CorrectAction/DueDate}"
+                                        
+                                        
+                                        />
+                        <Select id="CAStatus" selectedKey="{localModel>/CorrectAction/CAStatus}" width="200px"  >
+					<items>
+						<core:Item text="Overdue" key="CAST1" />
+						<core:Item text="Upcoming" key="CAST2"/>
+                        <core:Item text="Due Today" key="CAST3"/>
+					</items>
+				</Select> 				
+			   <TextArea value="{localModel>/CorrectAction/Comments}"  rows="3" cols="50" placeholder="Enter Comments here"    />   -->
+
+                                            <HBox>
+                                                <Button
+                                                    icon="sap-icon://delete"
+                                                    type="Neutral"
+                                                    press="onDeleteCA"
+                                                >
+                                                    <layoutData>
+                                                        <FlexItemData
+                                                            growFactor="0.1"
+                                                        />
+                                                    </layoutData>
+                                                </Button>
+
+                                                <Button
+                                                    icon="sap-icon://edit"
+                                                    type="Neutral"
+                                                    press="onDefaultDialogPressCA"
+                                                />
+                                            </HBox>
+                                        </cells>
+                                    </ColumnListItem>
+                                </Table>
+                            </Panel>
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon="sap-icon://process" />
+
+                        <IconTabFilter
+                            icon="sap-icon://notes"
+                            iconColor="Marker"
+                            key="icon2"
+                            text="Notes"
+                        >
+                            <Panel headerText="Notes Details">
+                                <MessageStrip
+                                    text="To add New Notes please click on 'Add New'."
+                                    showIcon="true"
+                                    class="sapUiSmallMarginBottom"
+                                />
+
+                                <Toolbar>
+                                    <ToolbarSpacer />
+                                    <Button
+                                        text="Add New"
+                                        press="onNotesDialogPress"
+                                    />
+                                </Toolbar>
+
+                                <Table
+                                    items="{/Notes}"
+                                    id="NotesTable"
+                                >
+                                    <columns>
+                                        <Column>
+                                            <Label text="Added By" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Added On" />
+                                        </Column>
+
+                                        <Column>
+                                            <Label text="Notes Type" />
+                                        </Column>
+                                        <Column>
+                                            <Label
+                                                text="Notes"
+                                                required="true"
+                                            />
+                                        </Column>
+                                        <Column>
+                                            <Label
+                                                text="Is Review Needed for added note ?"
+                                            />
+                                        </Column>
+                                        <Column>
+                                            <Label
+                                                width="50rem"
+                                                text=""
+                                            />
+                                        </Column>
+                                    </columns>
+
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Input
+                                                value="{createdBy}"
+                                                editable="false"
+                                            />
+                                            <Input
+                                                value="{createdAt}"
+                                                editable="false"
+                                            />
+                                            <Input
+                                                value="{NotesType}"
+                                                editable="false"
+                                            />
+
+                                            <!-- <cells>     <TextArea value="{localModel>IncNotes}" rows="5" cols="30"/> </cells> -->
+                                            <TextArea
+                                                value="{IncNotes}"
+                                                rows="4"
+                                                cols="70"
+                                                placeholder="Enter notes here test"
+                                                editable="false"
+                                            />
+                                        </cells>
+
+                                        <RadioButtonGroup
+                                            id="radioGroup1"
+                                            selectedIndex="{NotesReview}"
+                                            columns="2"
+                                            editable="false"
+                                        >
+                                            <RadioButton text="Yes" />
+                                            <RadioButton text="No" />
+                                        </RadioButtonGroup>
+
+                                        <HBox>
+                                            <Button
+                                                icon="sap-icon://delete"
+                                                type="Neutral"
+                                                press="onDeleteNotes"
+                                            >
+                                                <layoutData>
+                                                    <FlexItemData
+                                                        growFactor="0.1"
+                                                    />
+                                                </layoutData>
+                                            </Button>
+
+                                            <Button
+                                                icon="sap-icon://edit"
+                                                type="Neutral"
+                                                press="onEditNotes"
+                                            />
+                                        </HBox>
+                                    </ColumnListItem>
+                                </Table>
+                            </Panel>
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon="sap-icon://process" />
+
+                        <IconTabFilter
+                            icon="sap-icon://sys-enter"
+                            iconColor="Negative"
+                            key="icon4"
+                            text="Follow Up"
+                        >
+                            <MessageStrip
+                                text="To add Follow Up please click on Create Follow Up."
+                                showIcon="true"
+                                class="sapUiSmallMarginBottom"
+                            />
+                            <Panel headerText="Follow Up Details">
+                                <!-- <Toolbar>
+                                    <ToolbarSpacer />
+                                    <Button
+                                        text="Add New"
+                                        press="onFollowUpDialogPress"
+                                    />
+                                </Toolbar> -->
+
+                                <Table
+                                    items="{/Followup}"
+                                    id="FL1"
+                                >
+                                    <columns>
+                                        <Column>
+                                            <Label
+                                                text="Follow Up created Date"
+                                            />
+                                        </Column>
+                                        <Column>
+                                            <Label
+                                                text="Follow Up created By"
+                                            />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Follow Up Due Date" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Follow Up Status" />
+                                        </Column>
+                                        <Column>
+                                            <Label
+                                                text="Follow Up Created For"
+                                            />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Follow Up Notes" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Completion Dates" />
+                                        </Column>
+                                    </columns>
+
+                                   <ColumnListItem  highlight="{= ${followupstat} === '28' ? 'Success' : 'Error'}">
+                                        <cells>
+                                            <Input
+                                                value="{createdAt}"
+                                                editable="false"
+                                            />
+
+                                            <Input
+                                                value="{createdBy}"
+                                                editable="false"
+                                            />
+
+                                            <Input
+                                                value="{folloupduedate}"
+                                                editable="false"
+                                            />
+
+                                            <Input
+                                                value="{=   ${followupstat} === '27' ? 'Open' :
+${followupstat} === '28' ? 'Complete' :
+${followupstat} === '29' ? 'In Progress' :
+'' }"
+                                                editable="false"
+                                            />
+
+                                            <Input
+                                                value="{followupcrfor}"
+                                                editable="false"
+                                            />
+
+                                            <TextArea
+                                                value="{followupnotes}"
+                                                rows="3"
+                                                cols="50"
+                                                placeholder="Enter Comments here"
+                                                editable="false"
+                                            />
+
+                                            <Input
+                                                value="{compdate}"
+                                                editable="false"
+                                            />
+                                        </cells>
+                                        <HBox>
+                                            <Button
+                                                icon="sap-icon://delete"
+                                                type="Neutral"
+                                                press="onDeleteFollowUp"
+                                            >
+                                                <layoutData>
+                                                    <FlexItemData
+                                                        growFactor="0.1"
+                                                    />
+                                                </layoutData>
+                                            </Button>
+
+                                            <Button
+                                                icon="sap-icon://edit"
+                                                type="Neutral"
+                                                press="onEditFollowUp"
+                                            />
+                                        </HBox>
+                                    </ColumnListItem>
+                                </Table>
+                                <OverflowToolbar>
+                                    <ToolbarSpacer />
+                                    <Button
+                                        type="Emphasized"
+                                        text="Create Follow Up"
+                                        press="onFollowUpDialogPress"
+                                        id="1"
+                                    />
+                                    <!-- <Button
+                                        type="Attention"
+                                        text="Complete Follow Up"
+                                        press="OncompleteFollowUp"
+                                        id="2"
+                                    /> -->
+
+                                    <!-- <Button
+			text="Confirm"
+			class="sapUiSmallMarginBottom"
+			press=".onCompleteFolowUp"
+			width="280px"
+			ariaHasPopup="Dialog" /> -->
+                                </OverflowToolbar>
+                            </Panel>
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon="sap-icon://process" />
+
+                        <IconTabFilter
+                            icon="sap-icon://detail-view"
+                            iconColor="Positive"
+                            key="icon89"
+                            text="EHS-refferal"
+                        >
+                            <f:SimpleForm
+                                id="SimpleFormChange3y5"
+                                editable="true"
+                                layout="ResponsiveGridLayout"
+                                title=""
+                                labelSpanXL="3"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="0"
+                                emptySpanL="0"
+                                emptySpanM="0"
+                                emptySpanS="0"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false"
+                            >
+                                <f:content>
+                                    <VBox>
+                                        <HBox>
+                                            <Label
+                                                text="1. Has the Employee provided fully completed functional abilities Report to support the request for accomodation?"
+                                                class="sapUiTinyMargin"
+                                            />
+                                            <RadioButtonGroup
+                                                id="radioGroup11"
+                                                selectedIndex="{localModel>/Payload2/ReqAccom}"
+                                                columns="2"
+                                            >
+                                                <RadioButton text="Yes" />
+                                                <RadioButton text="No" />
+                                            </RadioButtonGroup>
+                                        </HBox>
+                                        <HBox>
+                                            <Label
+                                                text="2.Is accomodation greater than 10 days?"
+                                                class="sapUiTinyMargin"
+                                            />
+                                            <RadioButtonGroup
+                                                id="radioGroup12"
+                                                selectedIndex="{localModel>/Payload2/isaccomgttendays}"
+                                                columns="2"
+                                            >
+                                                <RadioButton text="Yes" />
+                                                <RadioButton text="No" />
+                                            </RadioButtonGroup>
+                                        </HBox>
+                                    </VBox>
+                                </f:content>
+                            </f:SimpleForm>
+                            <MessageStrip
+                                text="Note: It is understood thatsubmission of functional abilities Report (FAR) does not automatically trigger EHS action, but rather a possible consult.Ideally if the functional ability report ia  a short term illness,injury manager works this out with consultation."
+                                showIcon="true"
+                                showCloseButton="true"
+                                class="sapUiMediumMarginBottom"
+                            />
+
+                            <Panel
+                                headerText="EMPLOYEE HEALTH SERVICES REFERREL FORM"
+                            >
+                                <f:SimpleForm
+                                    id="SimpleFormChange480_Trial"
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    title="Address"
+                                    labelSpanXL="4"
+                                    labelSpanL="4"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="1"
+                                    singleContainerFullSize="false"
+                                >
+                                    <f:content>
+                                        <core:Title text="" />
+                                        <Label text="Employee's Name" />
+                                        <Input
+                                            value="{localModel>/Payload1/empname}"
+                                            editable="false"
+                                        />
+                                        <Label text="Employee's Position" />
+                                        <Input
+                                            value="{localModel>/Payload1/emppos}"
+                                            editable="false"
+                                        />
+
+                                        <Label text="Contact Number" />
+                                        <Input
+                                            value="9011186285"
+                                            editable="false"
+                                        />
+                                        <Label text="Department" />
+                                        <Input
+                                            value="{localModel>/Payload1/dept}"
+                                            editable="false"
+                                        />
+
+                                        <core:Title text="" />
+                                        <Label text="Employee ID" />
+                                        <Input
+                                            value="{localModel>/Payload1/empid}"
+                                            editable="false"
+                                        />
+
+                                        <Label text="Union" />
+                                        <Input
+                                            value="Combrate"
+                                            editable="false"
+                                        />
+                                        <Label text="Supervisor" />
+
+                                        <Input
+                                            value="{localModel>/Payload1/supname}"
+                                            editable="false"
+                                        />
+
+                                        <Label text="Work Location" />
+                                        <Input
+                                            value="{localModel>/Payload1/worklocation}"
+                                            editable="false"
+                                        />
+
+                                        <core:Title
+                                            text="Reason for Referral"
+                                        />
+                                        <VBox>
+                                            <RadioButtonGroup
+                                                selectedIndex="{localModel>/Payload2/reasonforref}"
+                                            >
+                                                <RadioButton
+                                                    text="Employee requires accomodation due to non-occupational injury and/or illness."
+                                                />
+                                                <RadioButton
+                                                    text="Employee requires accomodation due to Occupational/WCB injury and/or illness."
+                                                />
+                                            </RadioButtonGroup>
+                                            <!-- <CheckBox
+                                                text="Employee requires accomodation due to non-occupational injury and/or illness." 
+                                                selected="{localModel>/Payload2/reasonforref}"
+                                                select="onselectcheckbox1"
+                                               
+                                            />
+                                            <CheckBox
+                                                text="Employee requires accomodation due to Occupational/WCB injury and/or illness."
+                                             selected="{localModel>/Payload2/reasonforref}"
+                                               select="onselectcheckbox2"
+                                            /> -->
+                                        </VBox>
+
+                                        <core:Title text="" />
+                                        <core:Title text="Other:" />
+                                    </f:content>
+                                </f:SimpleForm>
+                                <HBox>
+                                    <TextArea
+                                        value="{localModel>/Payload2/Other}"
+                                        rows="6"
+                                        cols="1000"
+                                        width="100%"
+                                        placeholder="Enter maximum 1000 character only"
+                                    />
+                                </HBox>
+                                <VBox>
+                                    <Label
+                                        text="Brief history of the issue/concern:"
+                                        design="Bold"
+                                    />
+                                    <HBox>
+                                        <TextArea
+                                            value="{localModel>/Payload2/IssueHistory}"
+                                            rows="6"
+                                            cols="1000"
+                                            width="100%"
+                                            placeholder="Enter maximum 1000 character only"
+                                        />
+                                    </HBox>
+                                </VBox>
+                            </Panel>
+                            <OverflowToolbar>
+                                <ToolbarSpacer />
+                                <Button
+                                    type="Emphasized"
+                                    text="Submit"
+                                    press="onSubmitEHSRfrl"
+                                    id="3E"
+                                />
+                            </OverflowToolbar>
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon="sap-icon://process" />
+
+                        <IconTabFilter
+                            icon="sap-icon://detail-view"
+                            iconColor="Negative"
+                            key="fsf"
+                            text="RTW"
+                        >
+                            <Panel>
+                                <FlexBox alignItems="Center">
+                                    <m:VBox>
+                                        <Title
+                                            text="TEMPORARY RETURN TO WORK AGREEMENT"
+                                            level="H6"
+                                        />
+
+                                        <m:HBox>
+                                            <Text
+                                                text="This Agreement  will confirm the  arrangements made to temporarrily accomodate your medical restriction.      "
+                                            />
+                                        </m:HBox>
+                                        <m:HBox>
+                                            <Text
+                                                text=" In keeping with recommendation submitted by your health care provider you will be accomodated as follows:     "
+                                            />
+                                        </m:HBox>
+                                    </m:VBox>
+                                </FlexBox>
+                                <f:SimpleForm
+                                    id="SimpleFormChange48d0_Trial"
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    title=""
+                                    labelSpanXL="4"
+                                    labelSpanL="4"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="1"
+                                    singleContainerFullSize="false"
+                                >
+                                    <f:content>
+                                        <core:Title text="" />
+                                        <Label text="Employee's Name" />
+                                        <Input
+                                            value="{localModel>/Payload1/empname}"
+                                            editable="false"
+                                        />
+                                        <Label text="Current Position" />
+                                        <Input
+                                            value="{localModel>/Payload1/emppos}"
+                                            editable="false"
+                                        />
+
+                                        <Label text="Start date" />
+                                        <DatePicker
+                                            id="dq"
+                                            placeholder="Select Start date"
+                                            valueFormat='yyyy-MM-dd'
+                                            value="{localModel>/Payload3/stdate}"
+                                        />
+                                        <Button
+                                            icon="sap-icon://sys-help-2"
+                                            press="onPressStartDate"
+                                            width="40px"
+                                        />
+
+                                        <Label text="Anticipated Start date" />
+                                        <DatePicker
+                                            id="d8"
+                                            placeholder="Select Anticipated date"
+                                            valueFormat='yyyy-MM-dd'
+                                            value="{localModel>/Payload3/Antienddate}"
+                                        />
+                                        <Button
+                                            icon="sap-icon://sys-help-2"
+                                            press="onPressAnticipatedDate"
+                                            width="40px"
+                                        />
+
+                                        <core:Title text="" />
+
+                                        <Label text="Union" />
+                                        <Input
+                                            value="Ambdroc"
+                                            editable="false"
+                                        />
+                                        <Label text="Current Department" />
+                                        <Input
+                                            value="{localModel>/Payload1/dept}"
+                                            editable="false"
+                                        />
+                                        <Label text="Manager" />
+
+                                        <Input
+                                            value="{localModel>/Payload1/supname}"
+                                            editable="false"
+                                        />
+
+                                        <Label text=" Date" />
+                                        <DatePicker
+                                            id="d7"
+                                            placeholder="Select  date"
+                                            valueFormat='yyyy-MM-dd'
+                                            value="{localModel>/Payload3/date}"
+                                        />
+                                        <Button
+                                            icon="sap-icon://sys-help-2"
+                                            press="onPressDate"
+                                            width="40px"
+                                        />
+                                    </f:content>
+                                </f:SimpleForm>
+                                <MessageStrip
+                                    type="Information"
+                                    text="In case of difficulty in filling details, Please Click on help icon fore more details"
+                                    showIcon="true"
+                                    class="sapUiSmallMarginBottom"
+                                />
+                                <OverflowToolbar>
+                                    <ToolbarSpacer />
+                                    <Button
+                                        type="Emphasized"
+                                        text="Finalize Return to work"
+                                        press="onSubmitRTW"
+                                        id="finalize"
+                                    />
+                                </OverflowToolbar>
+                            </Panel>
+                        </IconTabFilter>
+
+                        <IconTabSeparator icon="sap-icon://process" />
+
+                        <IconTabFilter
+                            icon="sap-icon://detail-view"
+                            iconColor="NonInteractive"
+                            key="icon8"
+                            text="WCB"
+                        >
+                            <f:SimpleForm
+                                id="SimpleFormChangeS354"
+                                editable="true"
+                                layout="ResponsiveGridLayout"
+                                title=""
+                                labelSpanXL="3"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="4"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                emptySpanS="0"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false"
+                            >
+                                <f:content>
+                                    <Label text="Date of Injury" />
+                                    <DatePicker
+                                        id="ds7"
+                                        placeholder="Select date of Injury"
+                                        valueFormat='yyyy-MM-dd'
+                                        value="{localModel>/Payload4/injdate}"
+                                    />
+                                    <Label text="WCB Injury Category" />
+                                    <Select
+                                        forceSelection="false"
+                                        selectedKey="{localModel>/Payload4/WCBInjcat}"
+                                        id="ID1"
+                                        items="{ path: 'oMasterData>/WCBInjuryCategory', sorter: { path: 'InjCatID' } }"
+                                    >
+                                        <core:Item
+                                            key="{oMasterData>InjCatID}"
+                                            text="{oMasterData>InjCatText}"
+                                        />
+                                    </Select>
+
+                                    <Label text="WCB Injury Sub-Category" />
+                                    <Select
+                                        forceSelection="false"
+                                        selectedKey="{localModel>/Payload4/WCBInjsubcat}"
+                                        id="ID2"
+                                        items="{ path: 'oMasterData>/WCBInjurySubCategory', sorter: { path: 'InjSubCatID' } }"
+                                    >
+                                        <core:Item
+                                            key="{oMasterData>InjSubCatID}"
+                                            text="{oMasterData>InjSubCatText}"
+                                        />
+                                    </Select>
+                                    <Label text="Injury Description" />
+                                    <TextArea
+                                        value="{localModel>/Payload4/InjDesc}"
+                                        rows="4"
+                                        cols="50"
+                                    />
+                                    <Label text="Injury Status" />
+                                    <Select
+                                        forceSelection="false"
+                                        selectedKey="{localModel>/Payload4/Injstatus}"
+                                        id="ID3"
+                                        items="{ path: 'oMasterData>/WCBInjuryStatus', sorter: { path: 'InjStatID' } }"
+                                    >
+                                        <core:Item
+                                            key="{oMasterData>InjStatID}"
+                                            text="{oMasterData>InjStatText}"
+                                        />
+                                    </Select>
+                                    <Label text="Comments" />
+                                    <TextArea
+                                        value="{localModel>/Payload4/Comments}"
+                                        rows="4"
+                                        cols="50"
+                                    />
+                                    <Label text="Date reported to supervisor" />
+                                    <DatePicker
+                                        id="d17"
+                                        placeholder="Select date reported to supervisor"
+                                        valueFormat='yyyy-MM-dd'
+                                        value="{localModel>/Payload4/Datereptosup}"
+                                    />
+                                    <Label text="Date reported to HR" />
+                                    <DatePicker
+                                        id="ds1"
+                                        placeholder="Select date reported to HR"
+                                        valueFormat='yyyy-MM-dd'
+                                        value="{localModel>/Payload4/Datereptohr}"
+                                    />
+                                    <Label text="Date reported to WCB" />
+                                    <DatePicker
+                                        id="ds2"
+                                        placeholder="Select date reported to WCB"
+                                        valueFormat='yyyy-MM-dd'
+                                        value="{localModel>/Payload4/Datereptowcb}"
+                                    />
+                                    <Label text="First dat lost time" />
+                                    <DatePicker
+                                        id="ds3"
+                                        placeholder="Select date reported to WCB"
+                                        valueFormat='yyyy-MM-dd'
+                                        value="{localModel>/Payload4/firstdaylosttime}"
+                                    />
+                                    <Label text="Date to return to work" />
+                                    <DatePicker
+                                        id="ds4"
+                                        placeholder="Select date reported to WCB"
+                                        valueFormat='yyyy-MM-dd'
+                                        value="{localModel>/Payload4/Datertw}"
+                                    />
+                                    <Label text="Claim Status" />
+                                    <Select
+                                        forceSelection="false"
+                                        selectedKey="{localModel>/Payload4/claimstatus}"
+                                        id="ID4"
+                                        items="{ path: 'oMasterData>/WCBClaimStatus', sorter: { path: 'ClaimStatID' } }"
+                                    >
+                                        <core:Item
+                                            key="{oMasterData>ClaimStatID}"
+                                            text="{oMasterData>ClaimStatText}"
+                                        />
+                                    </Select>
+                                    <Label text="Why claim was denied?" />
+                                    <TextArea
+                                        value="{localModel>/Payload4/whydenied}"
+                                        rows="4"
+                                        cols="50"
+                                    />
+                                    <Label text="Claim Number" />
+                                    <Input
+                                        value="{localModel>/Payload4/Claimno}"
+                                    />
+                                    <Label text="Letter received from WCB" />
+                                    <DatePicker
+                                        id="ds45"
+                                        placeholder="Select date reported to WCB"
+                                        valueFormat='yyyy-MM-dd'
+                                        value="{localModel>/Payload4/letterrecwcb}"
+                                    />
+                                    <Label text="No Time Loss" />
+                                    <RadioButtonGroup
+                                        id="radioGroup13"
+                                        selectedIndex="{localModel>/Payload4/Notimeloss}"
+                                        columns="2"
+                                    >
+                                        <RadioButton text="Yes" />
+                                        <RadioButton text="No" />
+                                    </RadioButtonGroup>
+                                    <Label text="Notes" />
+                                    <TextArea
+                                        value="{localModel>/Payload4/Notes}"
+                                        rows="4"
+                                        cols="50"
+                                    />
+                                </f:content>
+                            </f:SimpleForm>
+                            <Panel headerText="Injury Details">
+                                <Toolbar>
+                                    <ToolbarSpacer />
+                                    <Button
+                                        text="Add New"
+                                        press="onAddInjury"
+                                    />
+                                </Toolbar>
+
+                                <Table items="{localModel>/Payload4/inj}">
+                                    <columns>
+                                        <Column>
+                                            <Label
+                                                text="Primary Injury (Type of Injury)"
+                                            />
+                                        </Column>
+                                        <Column>
+                                            <Label text="" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Body Part Injured" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="Side" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="" />
+                                        </Column>
+                                    </columns>
+
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Select
+                                                width="100%"
+                                                forceSelection="false"
+                                                selectedKey="{localModel>primaryinj}"
+                                                items="{ path: 'oMasterData>/InjuryType', sorter: { path: 'InjuryTypeID' } }"
+                                            >
+                                                <core:Item
+                                                    key="{oMasterData>InjuryTypeID}"
+                                                    text="{oMasterData>InjuryTypeText}"
+                                                />
+                                            </Select>
+                                            <Input
+                                                value=""
+                                                editable="false"
+                                                visible="false"
+                                            />
+                                            <Input
+                                                width="100%"
+                                                value="{localModel>bodypart}"
+                                                placeholder="Enter Body part injured here"
+                                            />
+                                            <Input
+                                                value=""
+                                                editable="false"
+                                                visible="false"
+                                            />
+                                            <Select
+                                                width="100%"
+                                                forceSelection="false"
+                                                selectedKey="{localModel>side}"
+                                                items="{ path: 'oMasterData>/InjureSide', sorter: { path: 'InjureSideID' } }"
+                                            >
+                                                <core:Item
+                                                    key="{oMasterData>InjureSideID}"
+                                                    text="{oMasterData>InjureSideText}"
+                                                />
+                                            </Select>
+                                            <Button
+                                                icon="sap-icon://delete"
+                                                type="Reject"
+                                                press="onDeleteInjury"
+                                                class="sapUiTinyMarginBegin"
+                                            />
+                                        </cells>
+                                    </ColumnListItem>
+                                </Table>
+                                <OverflowToolbar>
+                                    <ToolbarSpacer />
+                                    <Button
+                                        type="Emphasized"
+                                        text="Submit"
+                                        press="onSubmitwcb"
+                                        id="finalizqe"
+                                    />
+                                </OverflowToolbar>
+                            </Panel>
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </VBox>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+
+                <Button
+                    visible="{= ${localModel>/iconKey} === 'Investigation' ? true :false}"
+                    text="Submit"
+                    type="Accept"
+                    press="onSubmitInvestigation"
+                />
+                <Button
+                    visible="{= ${localModel>/iconKey} === 'icon3' ? true :false}"
+                    text="Submit"
+                    type="Accept"
+                    press="onSubmitCA"
+                />
+                <Button
+                    visible="{= ${localModel>/iconKey} === 'icon2' ? true :false}"
+                    text="Submit"
+                    type="Accept"
+                    press="onSubmitNotes"
+                />
+                <!-- <Button
+                  visible="true"
+                    text="Update"
+                    type="Accept"
+                    press="onUpdateIncident"
+                /> -->
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

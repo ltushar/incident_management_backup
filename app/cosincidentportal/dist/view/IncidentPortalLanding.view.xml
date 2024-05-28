@@ -1,0 +1,265 @@
+<mvc:View
+    controllerName="cosincidentportal.controller.IncidentPortalLanding"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="Incident Portal"
+        titleAlignment="Center"
+    >
+        <content>
+            <OverflowToolbar>
+                <GenericTag
+                    text="My Incidents : {/Incident/$count}"
+                    design="StatusIconHidden"
+                    status="Warning"
+                    class="sapUiTinyMargin"
+                >
+                    <ObjectNumber
+                        state="Error"
+                        emphasized="true"
+                    />
+                </GenericTag>
+
+                <!-- <GenericTag
+                        text="Closed Incidents"
+                        design="StatusIconHidden"
+                        status="Success"  >
+                        <ObjectNumber
+                            state="Error"
+                            emphasized="true"
+                            number="1"
+                        />
+                    </GenericTag> -->
+            </OverflowToolbar>
+
+            <Panel class="sapUiSmallMarginTopBottom">
+                <fb:FilterBar
+                    id="filterbar"
+                    persistencyKey="myPersKey"
+                    useToolbar="false"
+                    search=".onSearch"
+                    filterChange=".onFilterChange"
+                    afterVariantLoad=".onAfterVariantLoad"
+                    showClearOnFB="true" clear="onClear"
+                >
+                    <fb:filterGroupItems>
+                       <fb:FilterGroupItem
+                            name="Employee ID"
+                            label="Employee ID"
+                            groupName="Group4"
+                            visibleInFilterBar="true"
+                        >
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    id="Multi8"
+                                    name="Name"
+                                    selectedKey="{}"
+                                    items="{ 
+                                        path: '/EmployeeDetails',
+                                 
+                                   filters: [{path: 'EMPID', operator: 'NE', value1: null}]
+                                }"
+                                >
+                                    <core:Item
+                                        key="{EMPID}"
+                                        text="{EMPID}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            name="Incident Number"
+                            label="Incident Number"
+                            groupName="Group4"
+                            visibleInFilterBar="true"
+                        >
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                  
+                                    id="Multi6"
+                                    name="Name"
+                                    selectedKey="{}"
+                                    items="{ 
+                                        path: '/Incident'
+                                 
+                                   
+                                }"
+                                >
+                                    <core:Item
+                                        key="{IncNo}"
+                                        text="{IncNo}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            name="Incident Category"
+                            label="Incident Category"
+                            groupName="Group4"
+                            visibleInFilterBar="true"
+                        >
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                    id="Multi3"
+                                    name="Name"
+                                    selectedKey="{}"
+                                    items="{ 
+                                        path: '/IncMData',	
+                                 
+                                    filters: [{path: 'type', operator: 'EQ', value1: 'IncidentCategory'}]
+                                }"
+                                >
+                                    <core:Item
+                                        key="{mid}"
+                                        text="{text}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                     
+                        <fb:FilterGroupItem
+                            name="Incident Status"
+                            label="Incident Status"
+                            groupName="Group3"
+                            visibleInFilterBar="true"
+                        >
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                    id="Multi4"
+                                    name="Name"
+                                    items="{ 
+                                        path: '/IncMData',	
+                                  
+                                    filters: [{path: 'type', operator: 'EQ', value1: 'CAStat'}]
+                                }"
+                                >
+                                    <core:Item
+                                        key="{mid}"
+                                        text="{text}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem
+                            name="Incident Type"
+                            label="Incident Type"
+                            groupName="Group4"
+                            visibleInFilterBar="true"
+                        >
+                            <fb:control>
+                                <Select
+                                    forceSelection="false"
+                                    id="Multi5"
+                                    name="Name"
+                                    selectedKey="{}"
+                                    items="{ 
+                                        path: '/IncMData',	
+                                 
+                                    filters: [{path: 'type', operator: 'EQ', value1: 'IncidentTypes'}]
+                                }"
+                                >
+                                    <core:Item
+                                        key="{mid}"
+                                        text="{text}"
+                                    />
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+                <!-- Icon Tab Bar details (KPI) -->
+                <!-- Icon Tab Bar details (KPI) -->
+            </Panel>
+
+            <Panel id="panel">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title
+                            id="panelTitle"
+                            text="My Incidents ({/Incident/$count})"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <Table
+                 items="{
+            path : '/Incident',
+            sorter : {
+                path : 'INCID',
+                descending : true
+            }
+        }"
+                    updateFinished="onTableUpdateFinished"
+                    selectionChange="onIncidentSelectionChange"
+                    id="table"
+                >
+                    <columns>
+                        <Column>
+                            <Label text="Incident Number" />
+                        </Column>
+                         <Column>
+                            <Label text="Employee ID" />
+                        </Column>
+                        <Column>
+                            <Label text="Employee Name" />
+                        </Column>
+                       
+                        <Column>
+                            <Label text="Employee's Supervisor" />
+                        </Column>
+                         <Column>
+                            <Label text="Incident Date" />
+                        </Column>
+                        <Column>
+                            <Label text="Incident Type" />
+                        </Column>
+ <Column>
+                            <Label text="Incident Category" />
+                        </Column>
+                        <Column>
+                            <Label text="Incident Status" />
+                        </Column>
+                       
+                    </columns>
+
+                    <ColumnListItem
+                        visible="{= ${IncNo} === null ? false :true}"
+                    >
+                        <!-- {= ${IncNo} === '' ? false :true} -->
+                        <cells>
+                            <Link
+                                text="{IncNo}"
+                                press="OnPressIncNo"
+                            />
+                           <Text text="{empid}" />
+                             <Text text="{empname}" />
+                              
+ <Text text="{supname}" />
+  <Text text="{incDate}" />
+                            <Text
+                                text="{path: 'incType', formatter: '.formatIncidentType'} "
+                            />
+ <Text
+                                text="{path: 'incCategory', formatter: '.formatIncidentType'}"
+                            />
+                            <Text text="{incStatus}" />
+                           
+                        </cells>
+                    </ColumnListItem>
+                </Table>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

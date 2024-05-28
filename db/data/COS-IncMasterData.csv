@@ -1,0 +1,30 @@
+ID,mid,text,type
+1,1,Injury/Illness,IncidentCategory
+2,2,Property /Equipment Damage,IncidentCategory
+3,3,Near Miss,IncidentCategory
+4,4,Dangerous Occurrence,IncidentCategory
+5,5,Environment,IncidentCategory
+6,6,Security,IncidentCategory
+7,7,Non-Occupational,IncidentTypes
+8,8,No Treatment,IncidentTypes
+9,9,First Aid,IncidentTypes
+10,10,Medical Consultation,IncidentTypes
+11,11,Medical Aid,IncidentTypes
+12,12,Modified Work,IncidentTypes
+13,13,Lost time Incident,IncidentTypes
+14,14,Psychological,IncidentTypes
+15,15,Fatality,IncidentTypes
+16,16,Corporate,TypeofEvents
+17,17,Private,TypeofEvents
+18,18,Charity,TypeofEvents
+19,19,Critical,IncSevirity
+20,20,Major,IncSevirity
+21,21,Minor,IncSevirity
+22,22,Overdue,CAStat
+23,23,Pending,CAStat
+24,24,In Progress,CAStat
+25,25,Open,CAStat
+26,26,Closed,CAStat
+27,27,Open,FollowStat
+28,28,Complete,FollowStat
+29,29,In Progress,FollowStat

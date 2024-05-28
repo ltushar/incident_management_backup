@@ -1,0 +1,14 @@
+empid,empname,emppos,division,dept,section,worklocation,supid,supname,empemail,mgremail
+IDPL01,Sagar  Patil,Director,SAP,Delivery,Fiori/HANA,Pune,IDPL02,Tushar Ladhe,sagar@initiumdigital.com,tushar.ladhe@initiumdigital.com
+IDPL02,Tushar Ladhe,Sr. Consultant,SAP,Delivery,HANA,Pune,IDPL07,Mitalee Chaudhari,tushar.ladhe@initiumdigital.com,mitalee.chaudhari@initiumdigital.com
+IDPL03,Kunal Ingale,Sr. Consultant,SAP,Delivery,HANA,Pune,IDPL07,Mitalee Chaudhari,kunal.ingale@initiumdigital.com,mitalee.chaudhari@initiumdigital.com
+IDPL04,Varun Gaikwad,Sr. Consultant,SAP,Delivery,Fiori,Pune,IDPL08,Priyanka Ladhe,varun.gaikwad@initiumdigital.com,priyanka.ladhe@initiumdigital.com
+IDPL05,Manish Matte,Consultant,SAP,Delivery,HANA,Pune,IDPL08,Priyanka Ladhe,manish.matte@initiumdigital.com,priyanka.ladhe@initiumdigital.com
+IDPL06,Nikita Dusane,Sales Executive,SAP,Sales,Fiori/HANA,Pune,IDPL08,Priyanka Ladhe,nikita.dusane@intiumdigital.com,priyanka.ladhe@initiumdigital.com
+IDPL07,Mitalee Chaudhari,Consultant,SAP,Delivery,Fiori/HANA,Pune,IDPL02,Tushar Ladhe,mitalee.chaudhari@initiumdigital.com,tushar.ladhe@initiumdigital.com
+IDPL08,Priyanka Ladhe,Consultant,SAP,Delivery,Fiori/HANA,Pune,IDPL02,Tushar Ladhe,priyanka.ladhe@initiumdigital.com,tushar.ladhe@initiumdigital.com
+IDPL09,Keyur Chaudhari,Trainee,SAP,Delivery,Fiori,Pune,IDPL07,Mitalee Chaudhari,keyur.chaudhari@initiumdigital.com,mitalee.chaudhari@initiumdigital.com
+IDPL10,Sachin Mane,Trainer,SAP,Sales,Training,Pune,IDPL01,Sagar Patil,sachin.mane@initiumdigital.com,sagar@initiumdigital.com
+IDPL11,Ruchi Mulatkar,Trainer,SAP,Sales,Training,Pune,IDPL01,Sagar Patil,ruchi.mulatkar@initiumdigital.com,sagar@initiumdigital.com
+IDPL12,Pranali Joshi,Trainer,SAP,Sales,Training,Pune,IDPL01,Sagar Patil,pranali.joshi@initiumdigital.com,sagar@initiumdigital.com
+IDPL13,Abhishek Bhate,Sales Director,SAP,Sales,Fiori/HANA,Pune,IDPL01,Sagar Patil,abhishek.bhate@initiumdigital.com,sagar@initiumdigital.com

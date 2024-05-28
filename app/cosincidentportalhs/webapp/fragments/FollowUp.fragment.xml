@@ -1,0 +1,133 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog showHeader="false">
+        <content>
+            <f:SimpleForm
+               
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Follow Up Details"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <!-- <Label text="Follow Up Created By" />
+                    <Input
+                        value="{localModel>/FollowUp/followupcrby}"
+                        editable="false"
+                    />
+
+                    <Label text="Follow Up Created Date " />
+                    <DatePicker
+                        id="date1"
+                        placeholder="Enter Date"
+                        change="handleChange"
+                        valueFormat='yyyy-MM-dd'
+                        value="{localModel>/FollowUp/followcrdate}"
+                        editable="false"
+                    /> -->
+
+                    <Label text="Follow Up Due Date" />
+
+                    <DatePicker
+                        id="date2"
+                        placeholder="Enter Follow Up due date Date"
+                        change="handleChange"
+                        valueFormat='yyyy-MM-dd'
+                        value="{localModel>/FollowUp/folloupduedate}"
+                        editable="true"
+                    />
+
+                    <Label text="Follow Up Status" />
+                      <Select
+                        forceSelection="false"
+                        editable="false"
+                        selectedKey="{localModel>/FollowUp/followupstat}"
+                        id="in"
+                        items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'FollowStat'}]
+                                    }"
+                    >
+                        <core:Item
+                            key="{mid}"
+                            text="{text}"
+                        />
+                    </Select>
+<Label text="" />
+
+                    <MessageStrip
+                        type="Warning"
+                        text="You are not authorize to change Follow Up status."
+                        showIcon="true"
+                    />
+                    <Label text="Follow Up Created For" />
+
+                    <Input
+                        type="Text"
+                        showValueHelp="true"
+                        value="{localModel>/FollowUp/followupcrfor}"
+                        valueHelpRequest="handleValueHelp"
+                    />
+
+                    <Label text="Follow Up Notes" />
+                    <TextArea
+                        value="{localModel>/FollowUp/followupnotes}"
+                        rows="5"
+                        cols="100"
+                        placeholder="Enter notes here"
+                    />
+                    <Label text="Completion Date" />
+                    <DatePicker
+                        id="date3"
+                        placeholder="Enter Completion Date"
+                        change="handleChange"
+                        valueFormat='yyyy-MM-dd'
+                        value="{localModel>/FollowUp/compdate}"
+                        editable="true"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button
+                        type="Accept"
+                        text="Submit"
+                        press="OnSubmitFollowUp"
+                        ariaHasPopup="Dialog"
+                    />
+                    <!-- <Button
+                        type="Accept"
+                        text="Update"
+                        press="OnUpdateFollowUp"
+                        ariaHasPopup="Dialog"
+                    /> -->
+                    <Button
+                        type="Reject"
+                        text="Cancel"
+                        press="OnCancelFollowUpFragment"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

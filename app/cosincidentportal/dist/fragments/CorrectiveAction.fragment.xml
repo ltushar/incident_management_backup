@@ -1,0 +1,117 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog showHeader="false">
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Corrective Action Details"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <!-- <Label text="Created Date" />
+               <DatePicker
+                                            id="d9"
+                                            
+                                            valueFormat='yyyy-MM-dd'
+                                            value="{'2024-05-17'}"
+                                           
+                                        />
+                <Label text="Created By" />
+                <Input value="{Demo User}"></Input>
+         -->
+
+                    <Label text="Assigned to" />
+                    <Input
+                        type="Text"
+                        showValueHelp="true"
+                        value="{localModel>/CorrectAction/AssignTo}"
+                        valueHelpRequest="handleValueHelp"
+                    />
+
+                    <Label text="Due Date" />
+                    <DatePicker
+                        valueFormat='yyyy-MM-dd'
+                        value="{localModel>/CorrectAction/DueDate}"
+                    />
+                    <!-- <Label text="Correctiveaction Status" />
+                    <Input value="{localModel>/CorrectAction/CAStatus}" /> -->
+
+                    <Label
+                        text="Correctiveaction Status"
+                        required="true"
+                    />
+                    <Select
+                        editable="false"
+                        forceSelection="false"
+                        selectedKey="25"
+                        items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'CAStat'}]
+                                    }"
+                    >
+                        <core:Item
+                            key="{mid}"
+                            text="{text}"
+                        />
+                    </Select>
+                    <Label text="" />
+                    <Label text="" />
+                    <MessageStrip
+                        type="Warning"
+                        text="You are not authorize to change Corrective Action status."
+                        class="sapUiTinyMarginTop"
+                        enableFormattedText="true"
+                        showIcon="true"
+                        showCloseButton="false"
+                    />
+                    <Label text="Comments" />
+                    <TextArea value="{localModel>/CorrectAction/Comments}" />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button
+                        visible="{= ${localModel>/child5} === true }"
+                        type="Emphasized"
+                        text="Submit"
+                        press=".onFragSubmit"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        visible="{= ${localModel>/child6} === true }"
+                        type="Emphasized"
+                        text="Update"
+                        press=".onFragUpdate"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        type="Reject"
+                        text="Cancel"
+                        press=".onCancelFragment"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

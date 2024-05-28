@@ -1,0 +1,911 @@
+<mvc:View xmlns:vbm="sap.ui.vbm" controllerName="cosreportincident.controller.reportincident"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:m="sap.m"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:upload="sap.m.upload"
+    xmlns:fiori="sap.ui.webc.fiori"
+    xmlns:fe="sap.f">
+    <Page id="page" title="{i18n>title}">
+
+   	<f:SimpleForm id="SimpleFormToolbar"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			ariaLabelledBy="Title1" >
+			
+			<f:content>
+				
+				<!-- <Label text="Incident Number" />
+				<Input value= "{oModel>/IncNo}" /> -->
+				<Label text="Title (Brief Description of Event)" />
+				<Input value="{oModel>/Title}" placeholder="Enter maximum 200 character only" maxLength="200" required = "true" id = "titleId" change = "onLiveChange">
+				</Input>
+	
+			</f:content>
+
+
+		</f:SimpleForm> 
+                        <CustomListItem>
+                                <Panel width="auto">
+                                         <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title text="Employee Details:" />
+                                    <ToolbarSpacer />
+                                </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                                <f:SimpleForm
+                                                id="SimpleFormChange3544"
+                                                editable="true"
+                                                layout="ColumnLayout"
+                                                labelSpanXL="3"
+                                                labelSpanL="3"
+                                                labelSpanM="3"
+                                                labelSpanS="12"
+                                                adjustLabelSpan="false"
+                                                emptySpanXL="4"
+                                                emptySpanL="4"
+                                                emptySpanM="4"
+                                                emptySpanS="0"
+                                                columnsXL="2"
+                                                columnsL="1"
+                                                columnsM="1"
+                                                singleContainerFullSize="false"
+                                    >
+                         <f:content>
+                                                    <Label
+                                                        text="Employee Number"
+                                                    />
+                                                    <Input
+                                                        value="{oModel>/empid}"
+                                                        required="true"
+                                                        change="onLiveChange"
+                                                        id="empId"
+                                                        editable="false"
+                                                    />
+                                                    <Label text="Employee Name " />
+                                                    <Input
+                                                        value="{oModel>/empname}"
+                                                        required="true"
+                                                        change="onLiveChange"
+                                                        id="empnameId"
+                                                        editable="false"
+                                                    />
+                                                    <Label
+                                                        text="Division"
+                                                    />
+                                                    <Input
+                                                        value="{oModel>/division}"
+                                                        editable="false"
+                                                    />
+                                                    <Label
+                                                        text="Department"
+                                                    />
+                                                    <Input
+                                                        value="{oModel>/dept}"
+                                                        editable="false"
+                                                    />
+                                                    <Label
+                                                        text="Section"
+                                                    />
+                                                    <Input
+                                                        value="{oModel>/section}"
+                                                        editable="false"
+                                                    />
+                                                    <Label
+                                                        text="Worklocation"
+                                                    />
+                                                    <Input
+                                                        value="{oModel>/worklocation}"
+                                                        editable="false"
+                                                    />
+                                                    <Label
+                                                        text="Employee Position"
+                                                    />
+                                                    <Input
+                                                        value="{oModel>/emppos}"
+                                                        editable="false"
+                                                    />
+
+                                                    <Label
+                                                        text="Employee's Supervisor"
+                                                    />
+
+                                                    <Input
+                                                    id="EmpSupId"
+                                                    type="Text"
+                                                    showValueHelp="false"
+                                                    value="{oModel>/supname}"
+                                                    valueHelpRequest="handleValueHelp"
+                                                    required="false"
+                                                    editable="false"
+                                                />
+
+
+                                                    <Label
+                                                        text="Date of Incident"
+                                                        labelFor="DP1" 
+                                                        required = "true"
+                                                    />
+                                                    <DatePicker
+                                                        id="DP2"
+                                                        placeholder="Enter Date"
+                                                        change="onDateChange"
+                                                        valueFormat='yyyy-MM-dd'
+                                                        value="{oModel>/incDate}"
+                                                    />
+
+                                                    <Label
+                                                    text="Time of Incident" />
+                                                     <TimePicker id="TP3" change="handleChange"
+                                                    valueFormat="hh:mm:ss.s"
+                                                     value="{oModel>/inctime}"
+                                                    >
+                                                     </TimePicker>
+
+    
+                                                    <Label
+                                                        text="Date Incident Reported"
+                                                        labelFor="DP1"
+                                                    />
+                                                    <DatePicker
+                                                        id="DP1"
+                                                        placeholder="Enter Date"
+                                                        change="handleChange"
+                                                        valueFormat='yyyy-MM-dd'
+                                                        value="{oModel>/incDaterep}"
+                                                        minDate="{oModel>/maxDate}"
+                                                    />
+
+                                                   <Label
+                                                    text="Time Incident Reported" />
+                                                     <TimePicker id="TP2" change="handleChange"
+                                                    valueFormat="hh:mm:ss.s"
+                                                     value="{oModel>/inctimerep}"
+                                                    >
+                                                     </TimePicker>
+
+                                                
+                                                    <Label
+                                                        text="Years Experience in position"
+                                                    />
+                                                    <Input
+                                                        value="{oModel>/yearexppos}"
+                                                    />
+            
+                                                    <Label
+                                                        text="Was Incident on a COS facility or location?"
+                                                        labelFor="groupB"
+                                                    
+                                                    />
+                                                    <RadioButtonGroup
+                                                        id="radioGroup"
+                                                        columns="2"
+                                                        selectedIndex="{oModel>/wasIncOnCosloc}"
+                                                        select="onRadioSelect"
+                                                    >
+                                                    <buttons>
+                                                            <RadioButton
+                                                                text="Yes"
+                                                            />
+                                                            <RadioButton
+                                                                text="No"
+                                                            />
+                                                    </buttons>
+                                                    </RadioButtonGroup>
+
+
+                                                    <Label text="Shift" />
+                                                        <RadioButtonGroup id="rbg2" columns="2" selectedIndex="{oModel>/shift}">
+                                                        <buttons>
+
+                                                            <RadioButton id="RB2-1" text="Day Shift" />
+                                                            <RadioButton id="RB2-2" text="Evening Shift"/>
+                                                            <RadioButton id="RB2-3" text="Night Shift" />
+                                                            <RadioButton id="RB2-4" text="Overtime" />
+                                                        </buttons>
+                                                        </RadioButtonGroup>
+                                                </f:content>
+                                            </f:SimpleForm>
+
+                                             <Label text="If it is a Transit Incident, fill location below:" design="Bold" class = "sapUiMediumMarginBottom"/>
+                                                <HBox class = "sapUiMediumMarginBottom">
+
+                                                    <Label text = "Latitude (Location) :" class = "sapUiTinyMarginTop sapUiMediumMarginBegin" design="Bold" />
+                                                    <Input value = "{oModel>/latitude}"  class = "sapUiSmallMarginBegin" width = "20rem" placeholder="Enter maximum 200 character only" maxLength="200"/>
+
+                                                    <Label text = "Longitude (Location) :" class = "sapUiTinyMarginTop sapUiLargeMarginBegin" design="Bold"/>
+                                                    <Input value = "{oModel>/longitude}"  class = "sapUiSmallMarginBegin" width = "20rem" placeholder="Enter maximum 200 character only" maxLength="200"/>
+
+                                               </HBox>
+                        </content>
+                        </Panel>
+                        </CustomListItem>
+
+                    <!-- Additional Info -->
+                    <CustomListItem>
+                                <Panel width="auto">
+                                         <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title text="Additional info:" />
+                                    <ToolbarSpacer />
+                                </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                        <f:SimpleForm
+                            id="SimpleFormChange3545"
+                            editable="true"
+                            layout="ResponsiveGridLayout"
+                            title=""
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="4"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            emptySpanS="0"
+                            columnsXL="1"
+                            columnsL="1"
+                            columnsM="1"
+                            singleContainerFullSize="false"
+                        >
+                            <f:content>
+                                <Label
+                                                        text="Were you using a COS City Vehicle or Personal vehicle?"
+                                                        labelFor="groupB"
+                                                        
+                                                    />
+                                                    <RadioButtonGroup
+                                                        id="radioGroupid"
+                                                        columns="2"
+                                                        selectedIndex="{oModel>/wascosvehused}"
+                                                        select="onRadioSelect"
+                                                    >
+                                                    <buttons>
+                                                            <RadioButton
+                                                                text="COS Vehicle"
+                                                            />
+                                                            <RadioButton
+                                                                text=" Personal Vehicle"
+                                                            />
+                                                    </buttons>
+                                                    </RadioButtonGroup>
+
+                    
+                                <Label text="COS Equipment #"/>
+                                <VBox items="{oModel>/COSEquipment}">
+                                <CustomListItem>
+                                <HBox>
+  
+                                <Input value="{oModel>EquipNo}" width="20rem" class="sapUiLargeMarginRight"/>
+                               
+                                <Button
+                                        icon="sap-icon://add"
+                                        type="Default"
+                                        press="onAddCOSEquip"
+                                        class="sapUiTinyMarginBegin"
+                                        
+                                />
+
+                                <Button
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        press="onDeleteCOS"
+                                        class="sapUiTinyMarginBegin"
+                                /> 
+                                </HBox>
+                                 </CustomListItem>
+                                
+                                </VBox>
+                    
+                                <Label text = "Bus # (if transit incident)"/>
+                                <Input value = "{oModel>/busno}" change="onInputChange"/>
+
+                                <Label text = "Were there non-COS vehicles involved?"/>
+
+                                <RadioButtonGroup
+                                                        id="radioGroupid1"
+                                                        columns="2"
+                                                        selectedIndex="{oModel>/noncosvehinvol}"
+                                                        select="onRadioSelect"
+                                                    >
+                                                    <buttons>
+                                                            <RadioButton
+                                                                text="Yes"
+                                                            />
+                                                            <RadioButton
+                                                                text="No"
+                                                            />
+                                                    </buttons>
+                                                    </RadioButtonGroup>
+
+                                <Label text = "Police Report # "/>
+                                <Input value = "{oModel>/policereportno}"/>
+
+                            </f:content>
+                        </f:SimpleForm>
+
+
+                                        <HBox>
+                                            <Label text = "Are additional Mental Wellness supports offered or required ?" design="Bold" class = "sapUiTinyMarginTop"/>
+                                            <RadioButtonGroup
+                                        
+                                                        columns="2"
+                                                        selectedIndex="{oModel>/addwellness}"
+                                                        select="onRadioSelect">
+                                                    <RadioButton text="Yes" />
+                                                    <RadioButton text="No"/>
+                                            </RadioButtonGroup>
+                                        </HBox>
+                                            
+
+                                        <MessageStrip
+                                            text="For mental wellness support please contact EFAP at 306-975-3327 or talk to your supervisor"
+                                            showIcon="true"
+                                            class="sapUiSmallMarginBottom"
+                                            >
+                                        </MessageStrip>
+
+                        <Panel expandable="false">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title
+                                        text=""
+                                    />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        icon="sap-icon://add"
+                                        type="Emphasized"
+                                        press="onAddWitness"
+                                        visible="{= ${oModel>/addwellness} === 0 ? true :false}"
+                                    />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                       
+
+                        <Table
+                            items="{oModel>/witness}"
+                            visible="{= ${oModel>/addwellness} === 0 ? true :false}"
+                            noDataText = "No data"
+
+                        >
+                            <columns>
+                                <Column>
+                                    <Label
+                                        text="Name of Witness"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Witness contact number"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Email ID"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Witness Statement"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label text="" />
+                                </Column>
+
+                            </columns>
+
+                            <ColumnListItem>
+                                <cells>
+                                    <Input value="{oModel>witname}" />
+
+                                    <Input value="{oModel>witcontact}" maxLength="10"/>
+
+                                    <Input value="{oModel>witemail}" />
+
+                                    <Input value="{oModel>witstatement}" />
+
+
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        press="onDelete"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </Table>
+                         </Panel>
+                        </content>
+                        </Panel>
+                    </CustomListItem>
+
+
+                    <CustomListItem>
+                                <Panel width="auto">
+                                         <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title text="Incident Classification" />
+                                    <ToolbarSpacer />
+                                </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                        <f:SimpleForm
+                            id="SimpleFormChange35"
+                            editable="true"
+                            layout="ColumnLayout"
+                            title=""
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="4"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            emptySpanS="0"
+                            columnsXL="1"
+                            columnsL="1"
+                            columnsM="1"
+                            singleContainerFullSize="false"
+                        >
+                            <f:content>
+                                <Label
+                                    text="Incident Category"
+                                  
+                                />
+                                <Select
+                                    forceSelection="false"
+                                    selectedKey="{oModel>/incCategory}"
+                                    id="incCatId"
+                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncidentCategory'}]
+                                    }">
+                                    <core:Item key="{mid}" 
+                                               text="{text}" 
+                                    />
+                                </Select>
+
+                                <Label
+                                    text="Incident Type(Primary)"
+                                    
+                                />
+                                <Select
+                                    id = "incTypeId"
+                                    forceSelection="false"
+                                    selectedKey="{oModel>/incType}"
+                                    change="onLiveChange"
+                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncidentTypes'}]
+                                    }">
+                                    <core:Item key="{mid}" text="{text}" />
+                                </Select>
+
+                                <Label
+                                    text="Type of Event"
+                                />
+                                <Select
+                                    forceSelection="false"
+                                    selectedKey="{oModel>/eventtype}"
+                                    id="eventId"
+                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'TypeofEvents'}]
+                                    }">
+                                    <core:Item key="{mid}" text="{text}" />
+                                </Select>
+
+                                <Label
+                                    text="Actual Incident Severity"
+                                    
+                                />
+                                <Select
+                                    forceSelection="false"
+                                    selectedKey="{oModel>/actincseverity}"
+                                    id="actsevId"
+                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text'},
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncSevirity'}]
+                                    }">
+                                    <core:Item key="{mid}" text="{text}" />
+                                </Select>
+
+                                <Label
+                                    text="Potential Severity"
+                                    
+                                />
+                                <Select
+                                    forceSelection="false"
+                                    selectedKey="{oModel>/potseverity}"
+                                    id="poteId"
+                                    items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'IncSevirity'}]
+                                    }">
+                                    <core:Item key="{mid}" text="{text}" />
+                                </Select>
+
+                                <Label text = "Is a Detailed Investigation with OHS required ?"/>
+
+                                <RadioButtonGroup
+                                                        id="radioGroupid12"
+                                                        columns="2"
+                                                        selectedIndex="{oModel>/isinvestreq}"
+                                                        select="onRadioSelect"
+                                                    >
+                                                    <buttons>
+                                                            <RadioButton
+                                                                text="Yes"
+                                                            />
+                                                            <RadioButton
+                                                                text="No"
+                                                            />
+                                                    </buttons>
+                                                    </RadioButtonGroup>
+
+                            </f:content>
+                        </f:SimpleForm>
+
+                        <HBox>
+                            <m:FlexBox alignItems="Center">
+                            <Label text = "Other Involved People" design="Bold"/>
+                
+                            <CheckBox text="COS Employee" selected="{oModel>/child1}"/>
+				            <CheckBox text="Contractor" selected="{oModel>/child2}"/>
+                            <CheckBox text="Member of the Public" selected="{oModel>/child3}"/>
+                            </m:FlexBox>
+                        </HBox>
+
+                            <Panel expandable="false" visible="{= ${oModel>/child1} === true}" width = "auto">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title
+                                        text="COS Employee"
+                                    />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        icon="sap-icon://add"
+                                        type="Emphasized"
+                                        press="onAddCOSEmployee"
+                                    />
+                                </OverflowToolbar> 
+                            </headerToolbar>
+                        
+
+                        <Table
+                            items="{oModel>/COSEmployee}"
+                        >
+                            <columns>
+                                <Column>
+                                    <Label
+                                        text="Employee ID"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Employee Name"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Occupation"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Experience"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Association"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Shift"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label text="" />
+                                </Column>
+
+                            </columns>
+
+                            <ColumnListItem>
+                                <cells>
+                                    <Input value="{oModel>empid}" />
+
+                                    <Input value="{oModel>empname}" />
+
+                                    <Input value="{oModel>occupation}" />
+
+                                    <Input value="{oModel>exp}"/>
+
+                                    <Input value="{oModel>association}" />
+
+                                    <Input value="{oModel>shift}" />
+
+
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        press="onDeleteCOSEmp"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </Table>
+                        </Panel>
+
+
+                        <Panel expandable="false" visible="{= ${oModel>/child2} === true}">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title
+                                        text="Contractor"
+                                    />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        icon="sap-icon://add"
+                                        type="Emphasized"
+                                        press="onAddContractor"
+                                    />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                        
+
+                        <Table
+                            items="{oModel>/Contractor}" 
+                        >
+                            <columns>
+                                <Column>
+                                    <Label
+                                        text="Contractor Name"
+                                    />
+                                </Column>
+                                        <Column>
+                                    <Label
+                                        text="Contract Number"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="COS Project Manager"
+                                    />
+                                </Column>
+                        
+                                <Column>
+                                    <Label
+                                        text="Company Address"
+                                    />
+                                </Column>
+                                <Column >
+                                    <Label
+                                        text="Company Contact Number"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label text="" />
+                                </Column>
+
+                            </columns>
+
+                            <ColumnListItem>
+                                <cells>
+
+                                    <Input value="{oModel>contractname}" />
+
+                                    <Input value="{oModel>contractno}" />
+
+                                    <Input value="{oModel>cosprojmgrname}"/>
+
+                                    <Input value="{oModel>compadd}"/>
+
+                                    <Input value="{oModel>contactno}" maxLength="10"/>
+
+                                    
+
+
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        press="onDeleteContarctor"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </Table>
+                        </Panel>
+
+                        <Panel expandable="false" visible="{= ${oModel>/child3} === true}"> 
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title
+                                        text="Member of Public"
+                                    />
+                                    <ToolbarSpacer />
+                                    <Button
+                                        icon="sap-icon://add"
+                                        type="Emphasized"
+                                        press="onAddMember"
+                                    />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                        
+
+                        <Table
+                            items="{oModel>/Member}" 
+                        >
+                            <columns>
+                                <Column>
+                                    <Label
+                                        text="Name"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Address"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Phone"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Email Address"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="Were you assisted by
+                                             COS Employee ?"
+                                        wrapping="true"
+                                        width="200px"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label
+                                        text="COS Employee Name"
+                                    />
+                                </Column>
+                                <Column>
+                                    <Label text="" />
+                                </Column>
+
+                            </columns>
+
+                            <ColumnListItem>
+                                <cells>
+                                    <Input value="{oModel>name}" />
+
+                                    <Input value="{oModel>address}"/>
+
+                                    <Input value="{oModel>phone}" maxLength="10"/>
+
+                                    <Input value="{oModel>email}" />
+
+                                    <RadioButtonGroup
+                                                        id="radioGroupid123"
+                                                        columns="2"
+                                                        selectedIndex ="{oModel>assistedbycos}"
+                                                        select="onRadioSelect"
+                                                        >
+                                                    <buttons>
+                                                            <RadioButton text="Yes" />
+                                                            <RadioButton text="No" />
+                                                    </buttons>
+                                    </RadioButtonGroup>
+
+                                    <Input value="{oModel>cosempname}" />
+
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        type="Reject"
+                                        press="onDeleteMember"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </Table>
+                        </Panel>
+                        
+                        </content>
+                        </Panel>
+                    </CustomListItem>
+
+
+                    <!--Information details -->
+                        <Panel
+                            expandable="false"
+                            headerText="Description of Incident"
+                            width="100%"
+                            class="sapUiTinyMargin"
+                        >
+                            <!-- <headerToolbar>
+                                <OverflowToolbar>
+                                    <m:Title text="Description of Incident" />
+                                    <Button
+                                        icon="sap-icon://information"
+                                        press="onInfo"
+                                    />
+                                </OverflowToolbar>
+                            </headerToolbar> -->
+                            <content>
+                                <TextArea
+                                    width="100%"
+                                    id="TextArea"
+                                    placeholder="Enter text"
+                                    change="handleChange"
+                                    showExceededText="false"
+                                    rows="4"
+                                    ariaLabelledBy="TextAreaLabel"
+                                    value="{oModel>/incdesc}"
+                                />
+                            </content>
+                        </Panel>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    
+                    type="Neutral"
+                    text="Save as draft"
+                    press="onSubmit"
+                    id = "savebutton"
+                    icon = "sap-icon://save"
+                />
+
+                <Button
+                    type="Emphasized"
+                    text="Load draft"
+                    press="onSelectLoadDraft"
+                    ariaHasPopup="Dialog"  
+                    icon = "sap-icon://notes"
+                />
+
+                <Button
+                    type="Accept"
+                    text="Submit"
+                    press="onSubmit"
+                />
+
+                <Button
+                    type="Reject"
+                    text="Cancel"
+                    press="onPressCancel"
+                    ariaHasPopup="Dialog" 
+                    icon = "sap-icon://cancel"/>
+            </OverflowToolbar>
+        </footer>
+    
+    
+    
+    
+    </Page>
+</mvc:View>

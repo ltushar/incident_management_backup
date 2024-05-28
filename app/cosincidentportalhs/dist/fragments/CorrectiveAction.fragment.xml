@@ -1,0 +1,111 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog showHeader="false">
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Correvtive Action Details"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <!-- <Label text="Created Date" />
+               <DatePicker
+                                            id="d9"
+                                            
+                                            valueFormat='yyyy-MM-dd'
+                                            value="{'2024-05-17'}"
+                                           
+                                        />
+                <Label text="Created By" />
+                <Input value="{Demo User}"></Input>
+         -->
+
+                    <Label text="Re-assigned to" />
+                    <Input
+                        type="Text"
+                        showValueHelp="true"
+                        value="{localModel>/CorrectAction/AssignTo}"
+                        valueHelpRequest="handleValueHelp"
+                    />
+
+                    <Label text="Due Date" />
+                    <DatePicker
+                        valueFormat='yyyy-MM-dd'
+                        value="{localModel>/CorrectAction/DueDate}"
+                        editable="false"
+                    />
+                    <!-- <Label text="Correctiveaction Status" />
+                    <Input value="{localModel>/CorrectAction/CAStatus}" /> -->
+
+                    <Label
+                        text="Corrective action Status"
+                        required="true"
+                    />
+                    <Select
+                        forceSelection="false"
+                        selectedKey="{localModel>/CorrectAction/CAStatus}"
+                        items="{
+                                        path: '/IncMData',
+                                        sorter: { path: 'text' },
+                                        filters: [{path: 'type', operator: 'EQ', value1: 'CAStat'}]
+                                    }"
+                    >
+                        <core:Item
+                            key="{mid}"
+                            text="{text}"
+                        />
+                    </Select>
+
+                    <Label text="Comments" />
+                    <TextArea
+                        value="{localModel>/CorrectAction/Comments}"
+                        editable="false"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button
+                        visible="{= ${localModel>/child5} === true }"
+                        type="Emphasized"
+                        text="Submit"
+                        press=".onFragSubmit"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        visible="{= ${localModel>/child6} === true }"
+                        type="Emphasized"
+                        text="Update"
+                        press=".onFragUpdate"
+                        ariaHasPopup="Dialog"
+                    />
+                    <Button
+                        type="Reject"
+                        text="Cancel"
+                        press=".onCancelFragment"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

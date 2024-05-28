@@ -1,0 +1,8 @@
+/* Enter your custom styles here */
+.myLongText .sapMITBHorizontalWrapper {
+    max-width: 11rem;
+}
+ 
+.myLongText .sapMITBHorizontal.sapMITBFilter>.sapMITBHorizontalWrapper>.sapMITBText {
+    max-width: 11rem;
+}
